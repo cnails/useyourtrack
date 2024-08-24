@@ -1,0 +1,98 @@
+/* src/App.css */
+.layout {
+  min-height: 100vh;
+}
+
+.site-layout-content {
+  background: #fff;
+  padding: 24px;
+}
+
+.ant-tabs-tab-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ant-card .ant-card-body {
+  padding: 12px;
+}
+
+.ant-tabs-tab .anticon {
+  font-size: 24px; /* Размер иконки */
+  margin-right: 0!important;
+}
+
+.ant-tabs-tab .ant-tabs-tab-btn > div {
+  margin-top: 4px; /* Расстояние между иконкой и текстом */
+}
+
+.ant-tabs-nav-wrap {
+  justify-content: space-around;
+}
+
+.ant-tabs .ant-tabs-tab+.ant-tabs-tab {
+  margin: 0 0 0 12px;
+}
+
+.largeText {
+  font-weight: 600;
+  font-size: 20px;
+  color: #000000;
+}
+
+/* LevelsTable */
+.highlight-row {
+  background-color: #ffe58f !important; /* Светло-желтый фон */
+}
+
+/* * {
+  box-sizing: border-box;
+} */
+
+/* #root {
+  width: 100%;
+  height: 100vh;
+  max-width: 1280px;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.main_shadow {
+  box-shadow: 0 1.4px 2.8px rgba(186, 112, 36, 0.12), 0 0 1.4px rgba(186, 112, 36, 0.12);
+} */
