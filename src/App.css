@@ -23,7 +23,16 @@
   margin-right: 0!important;
 }
 
+.ant-tabs-tab.ant-tabs-tab-active > div > div {
+  color: #fff;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active > div > div > svg > path {
+  fill: #E25319 !important;
+}
+
 .ant-tabs-tab .ant-tabs-tab-btn > div {
+  color: #5A5A5A;
   margin-top: 4px; /* Расстояние между иконкой и текстом */
 }
 

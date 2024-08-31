@@ -1,11 +1,14 @@
-// src/App.js
 import { useState } from 'react';
 import { Layout, Tabs } from 'antd';
 import 'antd/dist/reset.css';  // сброс стилей
-import './App.css';  // ваши стили
-import { DollarOutlined, HomeOutlined, InfoCircleOutlined, UpSquareOutlined, UsergroupAddOutlined } from '@ant-design/icons';
+import './App.css';
 import { UserProfile } from './Components/UserProfile';
 import { LevelsTable } from './Components/Information';
+import MenuMainIcon from './Icons/Menu/main.svg?react';
+import MenuPromotionIcon from './Icons/Menu/promotion.svg?react';
+import MenuReferralIcon from './Icons/Menu/referral.svg?react';
+import MenuRulesIcon from './Icons/Menu/rules.svg?react';
+import MenuSalaryIcon from './Icons/Menu/salary.svg?react';
 
 const { Content, Footer } = Layout;
 
@@ -21,27 +24,27 @@ const tabs = [
   {
     key: EPage.main,
     label: 'Главная',
-    icon: <HomeOutlined />
+    icon: <MenuMainIcon />
   },
   {
     key: EPage.info,
-    label: 'Информация',
-    icon: <InfoCircleOutlined />
+    label: 'Правила',
+    icon: <MenuRulesIcon />
   },
   {
     key: EPage.referral,
     label: 'Рефералка',
-    icon: <UsergroupAddOutlined />
+    icon: <MenuReferralIcon />
   },
   {
     key: EPage.revenue,
     label: 'Баланс',
-    icon: <DollarOutlined />
+    icon: <MenuSalaryIcon />
   },
   {
     key: EPage.test,
     label: 'Продвижение',
-    icon: <UpSquareOutlined />
+    icon: <MenuPromotionIcon />
   },
 ]
 
@@ -75,7 +78,7 @@ const App = () => {
       </Content>
 
       {/* Футер с меню */}
-      <Footer style={{ textAlign: 'center', position: 'sticky', bottom: '-1px', zIndex: 1, padding: '0 8px'}}>
+      <Footer style={{ backgroundColor: '#32363C', borderTopLeftRadius: '12px', borderTopRightRadius: '12px', textAlign: 'center', position: 'sticky', bottom: '-1px', zIndex: 1, padding: '0 8px'}}>
         <Tabs
           defaultActiveKey={EPage.main}
           items={tabs.map(tab => ({

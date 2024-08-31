@@ -1,9 +1,9 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { useState } from 'react';
 import { Modal, Button } from 'antd';
-import UmtIcon from '../assets/umtIcon.svg?react';
-import RubbleIcon from '../assets/rubbleIcon.svg?react';
-import InfoIcon from '../assets/info.svg?react';
+import UmtIcon from '../Icons/umtIcon.svg?react';
+import RubbleIcon from '../Icons/rubbleIcon.svg?react';
+import InfoIcon from '../Icons/info.svg?react';
 
 export const BalanceCard = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
