@@ -7,7 +7,7 @@ import { DollarOutlined, HomeOutlined, InfoCircleOutlined, UpSquareOutlined, Use
 import { UserProfile } from './Components/UserProfile';
 import { LevelsTable } from './Components/Information';
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 enum EPage {
   main = 'main',
@@ -66,14 +66,9 @@ const App = () => {
 
   return (
     <Layout className="layout">
-      {/* Хедер */}
-      <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-        <div className="logo" />
-        <h1 style={{color: 'white', marginTop: '4px'}}>UseYourTrack</h1>
-      </Header>
 
       {/* Основной контент */}
-      <Content style={{ padding: '0 16px', marginTop: 64 }}>
+      <Content style={{ padding: '0 16px', marginTop: 24 }}>
         <div className="site-layout-content" style={{ minHeight: 'calc(100vh - 134px)' }}>
           {renderPage()}
         </div>

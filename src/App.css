@@ -1,11 +1,11 @@
 /* src/App.css */
 .layout {
+  background: #000000;
   min-height: 100vh;
 }
 
 .site-layout-content {
-  background: #fff;
-  padding: 24px;
+  padding: 12px;
 }
 
 .ant-tabs-tab-btn {
@@ -37,8 +37,8 @@
 
 .largeText {
   font-weight: 600;
-  font-size: 20px;
-  color: #000000;
+  font-size: 16px;
+  color: #fff;
 }
 
 /* LevelsTable */
@@ -96,3 +96,125 @@
 .main_shadow {
   box-shadow: 0 1.4px 2.8px rgba(186, 112, 36, 0.12), 0 0 1.4px rgba(186, 112, 36, 0.12);
 } */
+
+
+/* UserLevel.css */
+.user-level {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Расстояние между строками */
+}
+
+.level-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.level-name {
+  font-weight: bold;
+  color: white;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.level-info {
+  color: rgba(255, 255, 255, 0.50); /* Цвет для текста уровня */
+  font-size: 10px;
+}
+
+.level-counter {
+  color: white;
+}
+
+.level-progress {
+  width: 100%;
+}
+.level-progress > div {
+  border-radius: 8px;
+  border: 1px rgba(85, 85, 85, 0.75) solid;
+}
+
+/* BalanceComponent.css */
+.balance-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #32363C; /* Темно-серый фон для контейнера, чтобы выделяться на черном фоне */
+  border-radius: 30px;
+  border: 1px solid #333333; /* Цвет границы для лучшего контраста */
+  padding: 4px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Немного более выраженная тень */
+  width: 100%;
+  max-width: 600px;
+}
+
+.balance-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.balance-title {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.50); /* Белый цвет для текста заголовка */
+}
+
+.balance-amount {
+  display: flex;
+  justify-content: space-between;
+}
+
+.currency {
+  display: flex;
+  align-items: center;
+}
+
+.currency-icon {
+  font-size: 20px;
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+  color: #ffffff; /* Белый цвет для иконок */
+}
+
+.currency-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff; /* Белый цвет для значений */
+}
+
+.balance-actions {
+  display: flex;
+  align-items: center;
+}
+
+.info-button {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.info-button:focus {
+  outline: none;
+}
+
+.divider {
+  height: 30px;
+  border: 1px rgba(255, 255, 255, 0.3) solid;
+  margin: 0 12px;
+}
+
+.info-modal .ant-modal-header {
+  background-color: #333333; /* Цвет фона заголовка модалки */
+}
+
+.info-modal .ant-modal-body {
+  color: #ffffff; /* Белый цвет для текста модалки */
+  background-color: #1a1a1a; /* Цвет фона модалки */
+}
+
+.info-modal .ant-modal-footer {
+  background-color: #333333; /* Цвет фона нижней части модалки */
+}

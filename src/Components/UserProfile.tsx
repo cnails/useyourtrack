@@ -1,6 +1,7 @@
 import { Layout, Row, Col, Progress, Card, Typography, Tooltip, Modal } from 'antd';
 import { useState } from 'react';
-import { DemoPie } from './Statistic';
+import { BalanceCard } from './BalanceCard';
+import { UserLevel } from './UserLevel';
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
@@ -9,6 +10,7 @@ export const UserProfile = () => {
   const [open, setOpen] = useState(false);
 
   const user = {
+    name: 'Иванов Иван',
     balance: { currency1: 1500, currency2: 300 },
     level: 5,
     currentXP: 200,
@@ -57,18 +59,16 @@ export const UserProfile = () => {
         </Modal>
         <Row gutter={[16, 16]}>
           {/* Баланс в виде двух валют */}
-          <Col span={12}>
-            <Tooltip title={userBalanceTooltipText}>
-              <Card>
-                <Title level={4}>Баланс</Title>
-                <Text className='largeText'>{user.balance.currency1} umt</Text><br />
-                <Text className='largeText'>{user.balance.currency2} руб</Text>
-              </Card>
-            </Tooltip>
+          <Col span={20} style={{display: 'flex'}}>
+            {/* <Title level={4}>Баланс</Title> */}
+            <img width={'40px'} src="https://ltdfoto.ru/images/2024/08/28/profilePic.png" alt="profile picture" />
+            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginLeft: '10px'}}>
+              <Text className='largeText'>{user.name}</Text>
+            </div>
           </Col>
 
           {/* Текущий уровень пользователя и шкала опыта */}
-          <Col span={12}>
+          {/* <Col span={12}>
             <Tooltip title={userLevelTooltipText}>
               <Card>
                 <Title level={4} className='largeText'>Уровень {user.level}</Title>
@@ -76,35 +76,44 @@ export const UserProfile = () => {
                 <Text className='largeText'>{user.currentXP} / {user.nextLevelXP} XP</Text>
               </Card>
             </Tooltip>
+          </Col> */}
+        </Row>
+
+        <Row gutter={[16, 16]} style={{marginTop: '20px', flexWrap: 'nowrap'}}>
+          <Col span={8} style={{padding: 0, alignSelf: 'center'}}>
+            <UserLevel levelName="Epic" currentLevel="6" maxLevel="9" experiencePercentage="75" onLevelClick={() => {}} />
+          </Col>
+          <Col span={16} style={{padding: 0, marginLeft: '20px'}}>
+            <BalanceCard />
           </Col>
         </Row>
 
         {/* Информационный блок с картинкой */}
-        <Row gutter={[16, 16]} style={{ marginTop: '12px' }}>
+        {/* <Row gutter={[16, 16]} style={{ marginTop: '12px' }}>
           <Col span={24}>
             <Card>
               <Row style={{ display: 'flex', justifyContent: 'center' }}>
                 <Col span={20} style={{ padding: '30px 0' }}>
                   <img src={user.imageUrl} alt="Info" style={{ width: '100%' }} onClick={() => setOpen(true)} />
                 </Col>
-                <Col span={18}>
+                <Col span={18}> */}
                   {/* <Title level={4}>Информация</Title>
                   <Text>{user.info}</Text> */}
-                </Col>
+                {/* </Col>
               </Row>
             </Card>
           </Col>
-        </Row>
+        </Row> */}
 
         {/* Информационный блок с картинкой */}
-        <Row gutter={[16, 16]} style={{ marginTop: '12px' }}>
+        {/* <Row gutter={[16, 16]} style={{ marginTop: '12px' }}>
           <Col span={24}>
             <Card>
               <Title level={4}>Статистика</Title>
              <DemoPie />
             </Card>
           </Col>
-        </Row>
+        </Row> */}
       </Content>
   );
 };
