@@ -2,6 +2,7 @@ import { Layout, Row, Col, Progress, Card, Typography, Tooltip, Modal } from 'an
 import { useState } from 'react';
 import { BalanceCard } from './BalanceCard';
 import { UserLevel } from './UserLevel';
+import { MainTask } from './MainTask';
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
@@ -61,7 +62,7 @@ export const UserProfile = () => {
           {/* Баланс в виде двух валют */}
           <Col span={20} style={{display: 'flex'}}>
             {/* <Title level={4}>Баланс</Title> */}
-            <img width={'40px'} src="https://ltdfoto.ru/images/2024/08/28/profilePic.png" alt="profile picture" />
+            <img width={'40px'} src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=750&h=620&fl=progressive&q=70&fm=jpg" alt="profile picture" />
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginLeft: '10px'}}>
               <Text className='largeText'>{user.name}</Text>
             </div>
@@ -88,6 +89,11 @@ export const UserProfile = () => {
           </Col>
         </Row>
 
+        <Row>
+          <Col span={24}>
+            <MainTask />
+          </Col>
+        </Row>
         {/* Информационный блок с картинкой */}
         {/* <Row gutter={[16, 16]} style={{ marginTop: '12px' }}>
           <Col span={24}>

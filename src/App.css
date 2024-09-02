@@ -227,3 +227,68 @@
 .info-modal .ant-modal-footer {
   background-color: #333333; /* Цвет фона нижней части модалки */
 }
+
+
+/** MainTask */
+.custom-card {
+  background-color: black; /* Черный фон для компонента */
+  border-top-left-radius: 50px; /* Скругленные углы */
+  border-top-right-radius: 50px; /* Скругленные углы */
+  padding: 20px;
+  padding-top: 60px;
+  box-shadow: 0 -10px 20px rgba(0, 128, 0, 0.9); /* Зеленая тень сверху */
+  text-align: center; /* Центрирование контента */
+  width: 100%; /* Ширина 100% */
+  border: none;
+}
+
+/* Обертка для полной ширины */
+.full-width-container {
+  width: 100vw; /* 100% ширины окна просмотра */
+  margin: 18px -28px 0 -28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.outer_Circle {
+  background: linear-gradient(181deg, #D6FFC7 1.2%, #154403 65.02%);
+  width: 325px;
+  height: 325px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  background: radial-gradient(circle at 35% 35%, rgba(192, 254, 199, 0.9), #408a22 70%, #2E8B57); /* Внутренний градиент с бликом */
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-image {
+  width: 60%; /* Размер изображения внутри круга */
+  height: auto;
+}
+
+.mainTask_title {
+  color: white !important; /* Цвет заголовка */
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.description {
+  color: gray; /* Цвет описания */
+}
