@@ -1,3 +1,7 @@
+* {
+  font-family: 'Roboto', sans-serif !important;
+}
+
 /* src/App.css */
 .layout {
   background: #000000;
@@ -27,6 +31,32 @@
   color: #fff;
 }
 
+.ant-tabs-tab.ant-tabs-tab-active::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: -10%;
+  z-index: -1;
+  background-color: rgb(22, 24, 30);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 120%;
+  height: 60px;
+  animation-name: appearance;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appearance {
+  0% {
+    background-color: rgba(22, 24, 30, .0);
+  }
+  
+  100% {
+    background-color: rgba(22, 24, 30, .99);
+  }
+}
+
 .ant-tabs-tab.ant-tabs-tab-active > div > div > svg > path {
   fill: #E25319 !important;
 }
@@ -54,58 +84,6 @@
 .highlight-row {
   background-color: #ffe58f !important; /* Светло-желтый фон */
 }
-
-/* * {
-  box-sizing: border-box;
-} */
-
-/* #root {
-  width: 100%;
-  height: 100vh;
-  max-width: 1280px;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-.main_shadow {
-  box-shadow: 0 1.4px 2.8px rgba(186, 112, 36, 0.12), 0 0 1.4px rgba(186, 112, 36, 0.12);
-} */
-
 
 /* UserLevel.css */
 .user-level {
@@ -236,7 +214,7 @@
   border-top-right-radius: 50px; /* Скругленные углы */
   padding: 20px;
   padding-top: 60px;
-  box-shadow: 0 -10px 20px rgba(0, 128, 0, 0.9); /* Зеленая тень сверху */
+  box-shadow: 0 -15px 20px rgba(0, 128, 0, 0.8); /* Зеленая тень сверху */
   text-align: center; /* Центрирование контента */
   width: 100%; /* Ширина 100% */
   border: none;
@@ -291,4 +269,113 @@
 
 .description {
   color: gray; /* Цвет описания */
+}
+
+
+/* RulesPage.css */
+.rules-page-container {
+  background-color: #000; /* Черный фон для всей страницы */
+  color: #fff; /* Белый текст */
+}
+
+.rules-title {
+  text-align: center;
+  color: #fff !important; /* Белый цвет заголовка */
+}
+
+.rules-description {
+  text-align: center;
+  margin-bottom: 32px;
+  color: #ccc; /* Светло-серый цвет описания */
+}
+
+.tiles-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.rule-tile {
+  background-color: #333; /* Темно-серый фон для плиток */
+  border-radius: 10px;
+  padding: 10px 14px;
+  text-align: center;
+  display: flex;
+  min-width: 100%;
+  align-items: center;
+  margin-top: 10px;
+}
+
+
+.tile-icon {
+  font-size: 36px;
+  color: #ffcc00; /* Желтый цвет для иконки молнии */
+}
+
+.tile-text {
+  color: #fff; /* Белый цвет для текста */
+  font-weight: 500;
+  font-size: 20px;
+  padding: 0 14px;
+}
+
+.tile-description {
+  font-size: 12px;
+  padding-left: 10px;
+  border-left: 2px rgba(255, 255, 255, 0.20) solid;
+}
+
+.lifehack {
+  border-radius: 10px;
+  margin-top: 24px;
+  color: #000;
+  background: #FFB775;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.lifehack-title {
+  font-weight: 700;
+  padding-top: 10px;
+}
+
+.lifehack-description {
+  text-align: center;
+  padding: 8px 0;
+}
+
+.lifehack_amount {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.lifehack_amount_main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lifehack-icon {
+  font-size: 30px;
+}
+
+.lifehack_amount_icon {
+  height: 40px !important;
+  width: 40px !important;
+}
+
+.lifehack_amount_description {
+  font-size: 12px;
+  padding-top: 12px;
+}
+
+.lifehack_amount_ps {
+  color: #919295;
+  font-size: 12px;
+  padding-top: 14px;
 }

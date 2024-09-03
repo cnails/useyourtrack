@@ -80,11 +80,11 @@ export const UserProfile = () => {
           </Col> */}
         </Row>
 
-        <Row gutter={[16, 16]} style={{marginTop: '20px', flexWrap: 'nowrap'}}>
+        <Row gutter={[16, 16]} style={{marginTop: '20px', justifyContent: 'space-between', flexWrap: 'nowrap'}}>
           <Col span={8} style={{padding: 0, alignSelf: 'center'}}>
             <UserLevel levelName="Epic" currentLevel="6" maxLevel="9" experiencePercentage="75" onLevelClick={() => {}} />
           </Col>
-          <Col span={16} style={{padding: 0, marginLeft: '20px'}}>
+          <Col span={14} style={{padding: 0}}>
             <BalanceCard />
           </Col>
         </Row>

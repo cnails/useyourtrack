@@ -3,18 +3,18 @@ import { Layout, Tabs } from 'antd';
 import 'antd/dist/reset.css';  // сброс стилей
 import './App.css';
 import { UserProfile } from './Components/UserProfile';
-import { LevelsTable } from './Components/Information';
 import MenuMainIcon from './Icons/Menu/main.svg?react';
 import MenuPromotionIcon from './Icons/Menu/promotion.svg?react';
 import MenuReferralIcon from './Icons/Menu/referral.svg?react';
 import MenuRulesIcon from './Icons/Menu/rules.svg?react';
 import MenuSalaryIcon from './Icons/Menu/salary.svg?react';
+import { RulesPage } from './Components/RulesPage';
 
 const { Content, Footer } = Layout;
 
 enum EPage {
   main = 'main',
-  info = 'info',
+  rules = 'rules',
   referral = 'referral',
   revenue = 'revenue',
   test = 'test',
@@ -27,7 +27,7 @@ const tabs = [
     icon: <MenuMainIcon />
   },
   {
-    key: EPage.info,
+    key: EPage.rules,
     label: 'Правила',
     icon: <MenuRulesIcon />
   },
@@ -55,8 +55,9 @@ const App = () => {
     switch (selectedPage) {
       case EPage.main:
         return <UserProfile />
-      case EPage.info:
-        return <LevelsTable />
+      case EPage.rules:
+        // return <LevelsTable />
+        return <RulesPage />
         // return <h1>Information</h1>
       case EPage.referral:
         return <h1>Рефералка</h1>
