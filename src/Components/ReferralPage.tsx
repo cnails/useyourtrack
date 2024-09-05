@@ -1,46 +1,39 @@
 import { Typography, Row, Col } from 'antd';
-import { ThunderboltFilled } from '@ant-design/icons';
 import UmtIcon from '../Icons/umtIcon.svg?react';
 import RubbleIcon from '../Icons/rubbleIcon.svg?react';
 import { CommonCard } from './CommonCard';
 
 const { Title, Paragraph } = Typography;
 
-export const RulesPage = () => {
+export const ReferralPage = () => {
   return (
-    <div className="rules-page-container">
-      <Title level={2} className="rules-title">Правила</Title>
+    <div className="referral-page-container">
+      <Title level={2} className="rules-title">Пригласите друзей!</Title>
       <Paragraph className="rules-description">
-        На 1 уровне вы получаете за 1 выполненное задание по прослушиванию трека:
+        Вы и ваш друг получите бонусы
       </Paragraph>
       
-      <Row gutter={16} className="tiles-container">
-        <Col>
-          <CommonCard>
-            <ThunderboltFilled className="tile-icon" />
-            <div className="tile-text">7₽&nbsp;+&nbsp;25&nbsp;umt</div>
-            <div className="tile-description">если слушаете через приложение Яндекс Музыки с подпиской</div>
-          </CommonCard>
-        </Col>
-        <Col>
-          <CommonCard>
-            <ThunderboltFilled className="tile-icon" />
-            <div className="tile-text">4₽&nbsp;+&nbsp;15&nbsp;umt</div>
-            <div className="tile-description">если слушаете без подписки через браузер с компьютера</div>
-          </CommonCard>
-        </Col>
-        <Col>
-          <CommonCard>
-            <ThunderboltFilled className="tile-icon" />
-            <div className="tile-text">7₽&nbsp;+&nbsp;25&nbsp;umt</div>
-            <div className="tile-description">за прослушивание трека в Вк</div>
+      <Row gutter={16}>
+        <Col span={24}>
+          <CommonCard className="prize">
+            <img src="https://i.ibb.co/stQHgbH/image.png" alt="prize" style={{width: '75px'}} />
+            <div className="prize-title">Пригласить друга</div>
+            <div className="prize-description">
+             <UmtIcon className="lifehack_amount_icon" style={{zIndex: 999, transform: 'translateX(12px)'}} />
+             <RubbleIcon className="lifehack_amount_icon" style={{transform: 'translateX(-12px)'}} />
+             <div className="prize-text">
+                + 50 umt за приглашенного друга (другу тоже +50 umt+20₽ на счет)
+                + 1₽/5umt за каждое выполненное задание другом.
+             </div>
+            </div>
           </CommonCard>
         </Col>
       </Row>
       <Row gutter={16} className="tiles-container">
         <Col>
           <div className="lifehack">
-            <span className="lifehack-icon">💡</span>
+            {/* <ThunderboltFilled className="lifehack-icon" /> */}
+            <span className="lifehack-icon"></span>
             <div className="lifehack-title">Лайфхак</div>
             <div className="lifehack-description">Вы можете оформить пробную подписку на Яндекс.Музыку (месяц бесплатно) и получать по 7₽ за прослушивание каждого трека из задания.</div>
           </div>

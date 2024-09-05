@@ -9,6 +9,7 @@ import MenuReferralIcon from './Icons/Menu/referral.svg?react';
 import MenuRulesIcon from './Icons/Menu/rules.svg?react';
 import MenuSalaryIcon from './Icons/Menu/salary.svg?react';
 import { RulesPage } from './Components/RulesPage';
+import { ReferralPage } from './Components/ReferralPage';
 
 const { Content, Footer } = Layout;
 
@@ -56,11 +57,9 @@ const App = () => {
       case EPage.main:
         return <UserProfile />
       case EPage.rules:
-        // return <LevelsTable />
         return <RulesPage />
-        // return <h1>Information</h1>
       case EPage.referral:
-        return <h1>Рефералка</h1>
+        return <ReferralPage />
       case EPage.revenue:
         return <h1>100000$</h1>
       default:
