@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 * {
   font-family: 'Roboto', sans-serif !important;
 }
@@ -438,3 +440,52 @@
   flex-direction: column;
   width: 100%;
 }
+
+.revenue-description {
+  font-size: 12px;
+  text-align: center;
+  color: #fff;
+  font-weight: 500;
+  padding: 0 50px;
+}
+
+.resetInputStyles {
+  border: none;
+  background-color: transparent !important;
+  color: #fff;
+}
+
+.resetInputStyles::placeholder {
+  color: rgba(255, 255, 255, .5);
+  text-align: center;
+}
+
+.resetInputStyles:focus {
+  box-shadow: none;
+}
+
+.revenueMainButton {
+  border-radius: 10px;
+  background: #8AFF43 !important;
+  color: #000 !important;
+  font-weight: 500;
+  font-size: 16px;
+  width: 100%;
+  padding: 30px;
+}
+
+.custom-checkbox .ant-checkbox-inner {
+  background-color: white;
+  width: 30px;
+  height: 30px;
+}
+
+.custom-checkbox .ant-checkbox-inner::after {
+  font-size: 20px; /* Увеличиваем размер иконки */
+  height: 20px;
+}
+
+.invalid-checkbox .ant-checkbox-inner {
+  border: 3px red solid;
+}
+

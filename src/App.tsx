@@ -10,6 +10,7 @@ import MenuRulesIcon from './Icons/Menu/rules.svg?react';
 import MenuSalaryIcon from './Icons/Menu/salary.svg?react';
 import { RulesPage } from './Components/RulesPage';
 import { ReferralPage } from './Components/ReferralPage';
+import { RevenuePage } from './Components/RevenuePage';
 
 const { Content, Footer } = Layout;
 
@@ -39,7 +40,7 @@ const tabs = [
   },
   {
     key: EPage.revenue,
-    label: 'Баланс',
+    label: 'Вывод средств',
     icon: <MenuSalaryIcon />
   },
   {
@@ -61,7 +62,7 @@ const App = () => {
       case EPage.referral:
         return <ReferralPage />
       case EPage.revenue:
-        return <h1>100000$</h1>
+        return <RevenuePage />
       default:
         break;
     }
@@ -86,7 +87,7 @@ const App = () => {
             label: (
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 {tab.icon}
-                <div>{tab.label}</div>
+                <div style={{fontSize: '12px'}}>{tab.label}</div>
               </div>
             )
           }))}
