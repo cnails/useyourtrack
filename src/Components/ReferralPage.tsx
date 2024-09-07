@@ -1,6 +1,7 @@
 import { Typography, Row, Col } from 'antd';
 import UmtIcon from '../Icons/umtIcon.svg?react';
 import RubbleIcon from '../Icons/rubbleIcon.svg?react';
+import TelegramIcon from '../Icons/telegram.svg?react';
 import { CommonCard } from './CommonCard';
 
 const { Title, Paragraph } = Typography;
@@ -29,42 +30,36 @@ export const ReferralPage = () => {
           </CommonCard>
         </Col>
       </Row>
-      <Row gutter={16} className="tiles-container">
+      <Row gutter={16} className="tiles-container" style={{paddingTop: '24px'}}>
         <Col>
-          <div className="lifehack">
-            {/* <ThunderboltFilled className="lifehack-icon" /> */}
-            <span className="lifehack-icon"></span>
-            <div className="lifehack-title">Лайфхак</div>
-            <div className="lifehack-description">Вы можете оформить пробную подписку на Яндекс.Музыку (месяц бесплатно) и получать по 7₽ за прослушивание каждого трека из задания.</div>
-          </div>
+          {/* Не выводить если 0? */}
+          <span>Твои друзья: 3</span>
         </Col>
-      </Row>
-      <Row gutter={[16, 10]}>
-        <Col span={12}>
-            <CommonCard className="lifehack_amount">
-                <div className="lifehack_amount_main">
-                    <UmtIcon className="lifehack_amount_icon" />
-                    <span style={{padding: "6px 2px 0 0"}}>+</span>
-                    <RubbleIcon className="lifehack_amount_icon" />
-                </div>
-                <span className="lifehack_amount_description">Есть задания, за которые начисляются <strong>и рубли и внутренняя валюта</strong></span>
-            </CommonCard>
-        </Col>
-        {/* Todo: вынести серую карточку с закруглением */}
-        <Col span={12}>
-            <CommonCard className="lifehack_amount">
-                <div className="lifehack_amount_main">
-                    <UmtIcon className="lifehack_amount_icon" />
-                </div>
-                <span className="lifehack_amount_description">Есть задания, за которые начисляются <strong>только внутренняя валюта umt</strong></span>
-            </CommonCard>
+        <Col span={24}>
+          <CommonCard className="referralList">
+            <div className="referralListItem">
+              <span>Имя</span>
+              <span>Награда</span>
+            </div>
+            <div className="referralListItem">
+              <span>Имя</span>
+              <span>Награда</span>
+            </div>
+            <div className="referralListItem">
+              <span>Имя</span>
+              <span>Награда</span>
+            </div>
+          </CommonCard>
         </Col>
       </Row>
       <Row gutter={16}>
-        <Col>
-            <div className="lifehack_amount_ps">
-                узнать подробнее можно, нажав на валюту на главном экране
-            </div>
+        <Col span={24}>
+            <CommonCard className="referralButton">
+                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                  <Title level={2} className="rules-title" style={{fontSize: '16px', fontWeight: 600, paddingTop: '8px'}}>Пригласить друга</Title>
+                  <TelegramIcon style={{marginLeft: '10px'}} />
+                </div>
+            </CommonCard>
         </Col>
       </Row>
     </div>

@@ -393,6 +393,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  padding: 20px 14px;
 }
 
 .prize-title {
@@ -409,4 +410,31 @@
 .prize-description {
   display: flex;
   padding-top: 18px;
+}
+
+.referralButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  margin-top: 20px;
+}
+
+.referralListItem {
+  display: flex;
+  width: 100%;
+  padding-top: 6px;
+  justify-content: space-between;
+  border-bottom: 1px rgba(255, 255, 255, 0.20) solid;
+}
+
+.referralListItem:last-child {
+  border-bottom: none;
+}
+
+.referralList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
