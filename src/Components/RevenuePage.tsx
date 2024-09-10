@@ -12,7 +12,7 @@ export const RevenuePage = () => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setChecked(e.target.checked);
       setIsInvalidCheckbox(false);
-    //   TODO: валидация на два инпута
+        // TODO: валидация на два инпута
     };
   
     const handleSubmit = () => {

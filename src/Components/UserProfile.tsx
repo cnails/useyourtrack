@@ -3,12 +3,14 @@ import { useState } from 'react';
 import { BalanceCard } from './BalanceCard';
 import { UserLevel } from './UserLevel';
 import { MainTask } from './MainTask';
+import { BalanceInfo } from './BalanceInfo';
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
 
 export const UserProfile = () => {
   const [open, setOpen] = useState(false);
+  const [isBalanceInfoViewActive, setIsBalanceInfoViewActive] = useState(false);
 
   const user = {
     name: 'Иванов Иван',
@@ -37,6 +39,9 @@ export const UserProfile = () => {
     console.log('Clicked cancel button');
     setOpen(false);
   };
+  if (isBalanceInfoViewActive) {
+    return <BalanceInfo close={() => setIsBalanceInfoViewActive(false)} />;
+  }
 
   return (
       <Content>
@@ -59,25 +64,12 @@ export const UserProfile = () => {
           </p>
         </Modal>
         <Row gutter={[16, 16]}>
-          {/* Баланс в виде двух валют */}
           <Col span={20} style={{display: 'flex'}}>
-            {/* <Title level={4}>Баланс</Title> */}
             <img width={'40px'} src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=750&h=620&fl=progressive&q=70&fm=jpg" alt="profile picture" />
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginLeft: '10px'}}>
               <Text className='largeText'>{user.name}</Text>
             </div>
           </Col>
-
-          {/* Текущий уровень пользователя и шкала опыта */}
-          {/* <Col span={12}>
-            <Tooltip title={userLevelTooltipText}>
-              <Card>
-                <Title level={4} className='largeText'>Уровень {user.level}</Title>
-                <Progress percent={(user.currentXP / user.nextLevelXP) * 100} className='largeText' />
-                <Text className='largeText'>{user.currentXP} / {user.nextLevelXP} XP</Text>
-              </Card>
-            </Tooltip>
-          </Col> */}
         </Row>
 
         <Row gutter={[16, 16]} style={{marginTop: '20px', justifyContent: 'space-between', flexWrap: 'nowrap'}}>
@@ -85,7 +77,7 @@ export const UserProfile = () => {
             <UserLevel levelName="Epic" currentLevel="6" maxLevel="9" experiencePercentage="75" onLevelClick={() => {}} />
           </Col>
           <Col span={14} style={{padding: 0}}>
-            <BalanceCard />
+            <BalanceCard showBalanceInfo={() => setIsBalanceInfoViewActive(true)} />
           </Col>
         </Row>
 
@@ -94,32 +86,6 @@ export const UserProfile = () => {
             <MainTask />
           </Col>
         </Row>
-        {/* Информационный блок с картинкой */}
-        {/* <Row gutter={[16, 16]} style={{ marginTop: '12px' }}>
-          <Col span={24}>
-            <Card>
-              <Row style={{ display: 'flex', justifyContent: 'center' }}>
-                <Col span={20} style={{ padding: '30px 0' }}>
-                  <img src={user.imageUrl} alt="Info" style={{ width: '100%' }} onClick={() => setOpen(true)} />
-                </Col>
-                <Col span={18}> */}
-                  {/* <Title level={4}>Информация</Title>
-                  <Text>{user.info}</Text> */}
-                {/* </Col>
-              </Row>
-            </Card>
-          </Col>
-        </Row> */}
-
-        {/* Информационный блок с картинкой */}
-        {/* <Row gutter={[16, 16]} style={{ marginTop: '12px' }}>
-          <Col span={24}>
-            <Card>
-              <Title level={4}>Статистика</Title>
-             <DemoPie />
-            </Card>
-          </Col>
-        </Row> */}
       </Content>
   );
 };

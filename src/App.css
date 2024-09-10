@@ -146,7 +146,8 @@
 }
 
 .balance-title {
-  font-size: 10px;
+  font-size: 8px;
+  line-height: 8px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.50); /* Белый цвет для текста заголовка */
 }
@@ -163,16 +164,17 @@
 
 .currency-icon {
   font-size: 20px;
-  margin-right: 4px;
   display: flex;
   align-items: center;
-  color: #ffffff; /* Белый цвет для иконок */
+  width: 32px;
+  height: 32px;
 }
 
 .currency-value {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
-  color: #ffffff; /* Белый цвет для значений */
+  color: #fff;
+  padding-top: 6px;
 }
 
 .balance-actions {
@@ -190,7 +192,7 @@
 }
 
 .divider {
-  height: 30px;
+  height: 38px;
   border: 1px rgba(255, 255, 255, 0.3) solid;
   margin: 0 12px;
 }
@@ -475,7 +477,7 @@
 }
 
 .custom-checkbox .ant-checkbox-inner {
-  background-color: white;
+  background-color: #D9D9D9;
   width: 30px;
   height: 30px;
 }
@@ -489,3 +491,20 @@
   border: 3px red solid;
 }
 
+.BalanceInfo_currency-icon {
+  width: 67px;
+  height: 67px;
+  padding-bottom: 8px;
+}
+
+.BalanceInfo_currency-value {
+  font-weight: 600;
+  font-size: 26px;
+}
+
+.BalanceInfo_balance-description {
+  font-size: 12px;
+  font-weight: 300;
+  color: #fff;
+  text-align: center;
+}

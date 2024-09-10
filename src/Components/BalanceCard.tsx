@@ -5,17 +5,7 @@ import UmtIcon from '../Icons/umtIcon.svg?react';
 import RubbleIcon from '../Icons/rubbleIcon.svg?react';
 import InfoIcon from '../Icons/info.svg?react';
 
-export const BalanceCard = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
+export const BalanceCard = ({showBalanceInfo}: {showBalanceInfo: () => void}) => {
   return (
     <div className="balance-container">
       <div className="balance-info">
@@ -36,19 +26,10 @@ export const BalanceCard = () => {
         <Button
           type="text"
           icon={<InfoIcon style={{ fontSize: '24px' }} />}
-          onClick={showModal}
+          onClick={showBalanceInfo}
           className="info-button"
         />
       </div>
-      <Modal
-        title="Информация о балансе"
-        visible={isModalVisible}
-        onCancel={handleCancel}
-        footer={null}
-        className="info-modal"
-      >
-        <p>Здесь можно разместить дополнительную информацию о балансе пользователя.</p>
-      </Modal>
     </div>
   );
 };

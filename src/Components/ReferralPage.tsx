@@ -55,7 +55,12 @@ export const ReferralPage = () => {
       <Row gutter={16}>
         <Col span={24}>
             <CommonCard className="referralButton">
-                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} onClick={() => {
+                  const inviteMessage = "Привет! Присоединяйся к нашему сообществу на сайте! Вот ссылка: https://example.com";
+                  const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent('https://example.com')}&text=${encodeURIComponent(inviteMessage)}`;
+              
+                  window.open(telegramUrl, '_blank');
+                }}>
                   <Title level={2} className="rules-title" style={{fontSize: '16px', fontWeight: 600, paddingTop: '8px'}}>Пригласить друга</Title>
                   <TelegramIcon style={{marginLeft: '10px'}} />
                 </div>
