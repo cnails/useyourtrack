@@ -4,12 +4,13 @@ import { BalanceCard } from './BalanceCard';
 import { UserLevel } from './UserLevel';
 import { MainTask } from './MainTask';
 import { BalanceInfo } from './BalanceInfo';
+import { TaskModal } from './TaskModal';
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
 
 export const UserProfile = () => {
-  const [open, setOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [isBalanceInfoViewActive, setIsBalanceInfoViewActive] = useState(false);
 
   const user = {
@@ -30,14 +31,14 @@ export const UserProfile = () => {
     setModalText('The modal will be closed after two seconds');
     setConfirmLoading(true);
     setTimeout(() => {
-      setOpen(false);
+      setModalOpen(false);
       setConfirmLoading(false);
     }, 2000);
   };
 
   const handleCancel = () => {
     console.log('Clicked cancel button');
-    setOpen(false);
+    setModalOpen(false);
   };
   if (isBalanceInfoViewActive) {
     return <BalanceInfo close={() => setIsBalanceInfoViewActive(false)} />;
@@ -46,23 +47,7 @@ export const UserProfile = () => {
   return (
       <Content>
         {/* TODO: вынести в отдельный компонент */}
-        <Modal
-          title="Задание"
-          open={open}
-          okText={"Загрузить отчет"}
-          cancelText={"Пропустить"}
-          onOk={handleOk}
-          confirmLoading={confirmLoading}
-          onCancel={handleCancel}
-        >
-          <p>
-            <img src="https://i.ibb.co/fkmngGn/task.jpg" alt="Задание" style={{ width: '100%' }} />
-            <Text style={{fontSize: '18px'}}>Ваша задача прослушать трек полностью без перематываний (иначе он не будет отображаться как прослушанный) и поставить лайк в 2-х местах: на трек и на альбом‼️ После чего перейдите на главную (там, где "Моя волна"), прокрутите немного вниз и перейдите раздел История, сделайте скриншот, как показано на образцах выше☝️, и отправьте его в этот чат.
-Нажмите на этот текст, чтобы прочитать подробную инструкцию по выполнению (https://telegra.ph/Kak-pravilno-delat-otchyoty-o-proslushannyh-trekah-dlya-Use-My-Track-06-20)
-
-Обратите внимание. На скриншоте должен быть виден лайк и видно, что трек находится в списке прослушанных. <a href="https://music.yandex.ru/album/32592871/track/129412868" target='_blank'>Ссылка на трек</a></Text>
-          </p>
-        </Modal>
+        {/* <TaskModal open={modalOpen} setOpen={setModalOpen} /> */}
         <Row gutter={[16, 16]}>
           <Col span={20} style={{display: 'flex'}}>
             <img width={'40px'} src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=750&h=620&fl=progressive&q=70&fm=jpg" alt="profile picture" />
@@ -83,7 +68,7 @@ export const UserProfile = () => {
 
         <Row>
           <Col span={24}>
-            <MainTask />
+            <MainTask openTaskModal={() => setModalOpen(true)} />
           </Col>
         </Row>
       </Content>
