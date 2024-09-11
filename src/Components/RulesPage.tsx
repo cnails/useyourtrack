@@ -47,7 +47,7 @@ export const RulesPage = () => {
         </Col>
       </Row>
       <Row gutter={[16, 10]}>
-        <Col span={12}>
+        <Col span={12} style={{paddingTop: '24px'}}>
             <CommonCard className="lifehack_amount">
                 <div className="lifehack_amount_main">
                     <UmtIcon className="lifehack_amount_icon" />
@@ -57,8 +57,7 @@ export const RulesPage = () => {
                 <span className="lifehack_amount_description">Есть задания, за которые начисляются <strong>и рубли и внутренняя валюта</strong></span>
             </CommonCard>
         </Col>
-        {/* Todo: вынести серую карточку с закруглением */}
-        <Col span={12}>
+        <Col span={12} style={{paddingTop: '24px'}}>
             <CommonCard className="lifehack_amount">
                 <div className="lifehack_amount_main">
                     <UmtIcon className="lifehack_amount_icon" />

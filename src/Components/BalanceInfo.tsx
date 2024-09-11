@@ -47,6 +47,28 @@ export const BalanceInfo = ({close}: {close: () => void}) => {
           </div>
         </Col>
       </Row>
+      <Row gutter={16} className="tiles-container" style={{paddingTop: '24px'}}>
+        <Col>
+          {/* Не выводить если 0? */}
+          <span>История зачисления:</span>
+        </Col>
+        <Col span={24}>
+          <CommonCard className="referralList">
+            <div className="referralListItem">
+              <span>Задание №1</span>
+              <span>+7р, +25umt</span>
+            </div>
+            <div className="referralListItem">
+              <span>Задание №2</span>
+              <span>+7р, +25umt</span>
+            </div>
+            <div className="referralListItem">
+              <span>Задание №3</span>
+              <span>+7р, +25umt</span>
+            </div>
+          </CommonCard>
+        </Col>
+      </Row>
     </div>
   );
 };
