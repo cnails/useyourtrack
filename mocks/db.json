@@ -1,0 +1,75 @@
+{
+    "users": [
+        {
+        "user_id": 1,
+        "user_type": "musician",
+        "level_id": 3,
+        "balance_rub": 1000,
+        "balance_umt": 500,
+        "approved_tasks": 10,
+        "not_approved_tasks": 2
+        },
+        {
+        "user_id": 2,
+        "user_type": "listener",
+        "level_id": 1,
+        "balance_rub": 200,
+        "balance_umt": 100,
+        "approved_tasks": 5,
+        "not_approved_tasks": 0
+        }
+    ],
+    "tasks": [
+        {
+        "task_id": 1,
+        "task_type": "track",
+        "image_url": "https://example.com/image1.jpg",
+        "text": "Complete the task by listening to the track."
+        },
+        {
+        "task_id": 2,
+        "task_type": "custom_task",
+        "image_url": "https://example.com/image2.jpg",
+        "text": "Create a custom mix."
+        }
+    ],
+    "levels": [
+        {
+        "id": 1,
+        "level": 1,
+        "umt": 100,
+        "sub_rub": 50,
+        "sub_coins": 10,
+        "rub": 500,
+        "coins": 50
+        },
+        {
+        "id": 2,
+        "level": 2,
+        "umt": 200,
+        "sub_rub": 100,
+        "sub_coins": 20,
+        "rub": 1000,
+        "coins": 100
+        }
+    ],
+    "rules": {
+        "text": "These are the rules of the platform."
+    },
+    "balance": {
+        "text": "Your current balance is displayed here."
+    },
+    "referrals": {
+        "text": "Refer friends to earn more.",
+        "referrals": 3,
+        "ref_link": "https://example.com/referral"
+    },
+    "withdraw_info": {
+        "text": "You can withdraw to the following banks.",
+        "available_banks": ["Bank A", "Bank B", "Bank C"]
+    },
+    "promotion": {
+        "text": "Your current promotion status.",
+        "current_status": "Active"
+    }
+}

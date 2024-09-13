@@ -1,16 +1,14 @@
-import { Layout, Row, Col, Progress, Card, Typography, Tooltip, Modal } from 'antd';
+import { Layout, Row, Col,  Typography } from 'antd';
 import { useState } from 'react';
 import { BalanceCard } from './BalanceCard';
 import { UserLevel } from './UserLevel';
 import { MainTask } from './MainTask';
 import { BalanceInfo } from './BalanceInfo';
-import { TaskModal } from './TaskModal';
 
 const { Content } = Layout;
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 export const UserProfile = () => {
-  const [modalOpen, setModalOpen] = useState(false);
   const [isBalanceInfoViewActive, setIsBalanceInfoViewActive] = useState(false);
 
   const user = {
@@ -27,27 +25,12 @@ export const UserProfile = () => {
   const userLevelTooltipText = "Уровень повышается за счет накопления umt. С увеличением уровня, увеличивается стоимость оплаты заданий в рублях. 7, 8, 9, 10 и тд рублей соответственно выплачивается за выполненное задание";
   const userBalanceTooltipText = "umt - это внутренняя криптовалюта, которая в дальнейшем пойдет на листинг. Также за накопление umt повышается ваш уровень, что позволяет получать более прибыльные задания";
 
-  const handleOk = () => {
-    setModalText('The modal will be closed after two seconds');
-    setConfirmLoading(true);
-    setTimeout(() => {
-      setModalOpen(false);
-      setConfirmLoading(false);
-    }, 2000);
-  };
-
-  const handleCancel = () => {
-    console.log('Clicked cancel button');
-    setModalOpen(false);
-  };
   if (isBalanceInfoViewActive) {
     return <BalanceInfo close={() => setIsBalanceInfoViewActive(false)} />;
   }
 
   return (
       <Content>
-        {/* TODO: вынести в отдельный компонент */}
-        {/* <TaskModal open={modalOpen} setOpen={setModalOpen} /> */}
         <Row gutter={[16, 16]}>
           <Col span={20} style={{display: 'flex'}}>
             <img width={'40px'} src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=750&h=620&fl=progressive&q=70&fm=jpg" alt="profile picture" />
@@ -68,7 +51,7 @@ export const UserProfile = () => {
 
         <Row>
           <Col span={24}>
-            <MainTask openTaskModal={() => setModalOpen(true)} />
+            <MainTask />
           </Col>
         </Row>
       </Content>
