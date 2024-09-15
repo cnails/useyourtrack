@@ -1,105 +1,262 @@
-// api.ts
-import { useQuery, UseQueryResult } from 'react-query';
-import {
-  GetTgUserResponse,
-  GetTaskResponse,
-  LevelInfo,
-  RulesInfo,
-  BalanceInfo,
-  ReferralsInfo,
-  WithdrawInfo,
-  PromotionInfo,
-  UserNotFoundResponse,
-  TaskNotFoundResponse,
-  UnauthorizedResponse,
-} from './models';
+import axios from 'axios';
+import { useQuery, useMutation, UseQueryOptions, UseMutationOptions } from 'react-query';
+import { getUserId } from './Utils/utils';
 
-const API_BASE_URL = 'http://localhost:3001'; // Замените на реальный URL вашего API
+// Создаем экземпляр axios с базовым URL
+const apiClient = axios.create({
+  baseURL: 'http://localhost:3001', // Замените на ваш базовый URL API
+});
 
-// Функция для выполнения fetch-запросов
-const fetcher = async <T>(url: string): Promise<T> => {
-  const response = await fetch(url, {
-    headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`, // Используйте актуальный токен
+// Интерфейс для обработки ошибок
+interface ErrorResponse {
+  detail: string;
+}
+
+// Интерфейс для параметров авторизации (если необходимо)
+interface AuthParams {
+  token: string;
+}
+
+// ==================== /get_tg_user ====================
+
+export interface GetTgUserParams {
+  user_id: number;
+}
+
+export interface GetTgUserResponse {
+  user_id: number;
+  user_type: 'musician' | 'listener';
+  level_id: number;
+  balance_rub: number;
+  balance_umt: number;
+  approved_tasks: number;
+  not_approved_tasks: number;
+}
+
+export const useGetTgUser = (
+  options?: UseQueryOptions<GetTgUserResponse, ErrorResponse>
+) => {
+  const user_id = getUserId();
+  return useQuery<GetTgUserResponse, ErrorResponse>(
+    ['getTgUser'],
+    async () => {
+      const response = await apiClient.get<GetTgUserResponse>('/get_tg_user', {
+        params: {
+          user_id,
+        },
+      });
+      return response.data;
     },
-  });
-
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-
-  return response.json();
-};
-
-// Хук для получения данных пользователя
-export const useGetTgUser = (userId: number): UseQueryResult<GetTgUserResponse, Error> => {
-  return useQuery<GetTgUserResponse, Error>(
-    ['getTgUser', userId],
-    () => fetcher<GetTgUserResponse>(`${API_BASE_URL}/get_tg_user?user_id=${userId}`),
-    {
-      enabled: !!userId,
-    }
+    options
   );
 };
 
-// Хук для получения задания
-export const useGetTask = (userId: number): UseQueryResult<GetTaskResponse, Error> => {
-  return useQuery<GetTaskResponse, Error>(
-    ['getTask', userId],
-    () => fetcher<GetTaskResponse>(`${API_BASE_URL}/get_task?user_id=${userId}`),
-    {
-      enabled: !!userId,
-    }
+// ==================== /get_task ====================
+
+export interface GetTaskParams {
+  user_id: number;
+}
+
+export interface GetTaskResponse {
+  task_id: number;
+  task_type: 'track' | 'custom_task' | 'side_task';
+  image_url: string;
+  text: string;
+}
+
+export const useGetTask = (
+  params: GetTaskParams,
+  options?: UseQueryOptions<GetTaskResponse, ErrorResponse>
+) => {
+  return useQuery<GetTaskResponse, ErrorResponse>(
+    ['getTask', params],
+    async () => {
+      const response = await apiClient.get<GetTaskResponse>('/get_task', {
+        params,
+      });
+      return response.data;
+    },
+    options
   );
 };
 
-// Хук для получения информации об уровнях
-export const useGetLevelsInfo = (): UseQueryResult<LevelInfo[], Error> => {
-  return useQuery<LevelInfo[], Error>(
-    'getLevelsInfo',
-    () => fetcher<LevelInfo[]>(`${API_BASE_URL}/info/levels`)
+// ==================== /task (POST) ====================
+
+export interface PostTaskRequest {
+  user_id: number;
+  task_id: number;
+  image_url?: string | null;
+  text?: string | null;
+  skip_task?: boolean;
+}
+
+export interface PostTaskResponse {
+  detail: string;
+}
+
+export const usePostTask = (
+  options?: UseMutationOptions<PostTaskResponse, ErrorResponse, PostTaskRequest>
+) => {
+  return useMutation<PostTaskResponse, ErrorResponse, PostTaskRequest>(
+    async (data) => {
+      const response = await apiClient.post<PostTaskResponse>('/task', data);
+      return response.data;
+    },
+    options
   );
 };
 
-// Хук для получения информации о правилах
-export const useGetRulesInfo = (): UseQueryResult<RulesInfo, Error> => {
-  return useQuery<RulesInfo, Error>(
-    'getRulesInfo',
-    () => fetcher<RulesInfo>(`${API_BASE_URL}/info/rules`)
+// ==================== /info/levels ====================
+
+export interface LevelInfo {
+  id: number;
+  level: number;
+  umt: number;
+  sub_rub: number;
+  sub_coins: number;
+  rub: number;
+  coins: number;
+}
+
+export const useGetLevels = (
+  options?: UseQueryOptions<LevelInfo[], ErrorResponse>
+) => {
+  return useQuery<LevelInfo[], ErrorResponse>(
+    'getLevels',
+    async () => {
+      const response = await apiClient.get<LevelInfo[]>('/info/levels');
+      return response.data;
+    },
+    options
   );
 };
 
-// Хук для получения информации о балансе
-export const useGetBalanceInfo = (): UseQueryResult<BalanceInfo, Error> => {
-  return useQuery<BalanceInfo, Error>(
+// ==================== /info/rules ====================
+
+export interface RulesInfo {
+  text: string;
+}
+
+export const useGetRules = (
+  options?: UseQueryOptions<RulesInfo, ErrorResponse>
+) => {
+  return useQuery<RulesInfo, ErrorResponse>(
+    'getRules',
+    async () => {
+      const response = await apiClient.get<RulesInfo>('/info/rules');
+      return response.data;
+    },
+    options
+  );
+};
+
+// ==================== /info/balance ====================
+
+export interface BalanceInfo {
+  text: string;
+}
+
+export const useGetBalanceInfo = (
+  options?: UseQueryOptions<BalanceInfo, ErrorResponse>
+) => {
+  return useQuery<BalanceInfo, ErrorResponse>(
     'getBalanceInfo',
-    () => fetcher<BalanceInfo>(`${API_BASE_URL}/info/balance`)
+    async () => {
+      const response = await apiClient.get<BalanceInfo>('/info/balance');
+      return response.data;
+    },
+    options
   );
 };
 
-// Хук для получения информации о рефералах
-export const useGetReferralsInfo = (): UseQueryResult<ReferralsInfo, Error> => {
-  return useQuery<ReferralsInfo, Error>(
+// ==================== /info/referrals ====================
+
+export interface ReferralsInfo {
+  text: string;
+  referrals: number;
+  ref_link: string;
+}
+
+export const useGetReferralsInfo = (
+  options?: UseQueryOptions<ReferralsInfo, ErrorResponse>
+) => {
+  return useQuery<ReferralsInfo, ErrorResponse>(
     'getReferralsInfo',
-    () => fetcher<ReferralsInfo>(`${API_BASE_URL}/info/referrals`)
+    async () => {
+      const response = await apiClient.get<ReferralsInfo>('/info/referrals');
+      return response.data;
+    },
+    options
   );
 };
 
-// Хук для получения информации о выводе средств
-export const useGetWithdrawInfo = (): UseQueryResult<WithdrawInfo, Error> => {
-  return useQuery<WithdrawInfo, Error>(
+// ==================== /info/withdraw ====================
+
+export interface WithdrawInfo {
+  text: string;
+  available_banks: string[];
+}
+
+export const useGetWithdrawInfo = (
+  options?: UseQueryOptions<WithdrawInfo, ErrorResponse>
+) => {
+  return useQuery<WithdrawInfo, ErrorResponse>(
     'getWithdrawInfo',
-    () => fetcher<WithdrawInfo>(`${API_BASE_URL}/info/withdraw`)
+    async () => {
+      const response = await apiClient.get<WithdrawInfo>('/info/withdraw');
+      return response.data;
+    },
+    options
   );
 };
 
-// Хук для получения информации о продвижении
-export const useGetPromotionInfo = (userId: number): UseQueryResult<PromotionInfo, Error> => {
-  return useQuery<PromotionInfo, Error>(
-    ['getPromotionInfo', userId],
-    () => fetcher<PromotionInfo>(`${API_BASE_URL}/info/promotion?user_id=${userId}`),
-    {
-      enabled: !!userId,
-    }
+// ==================== /withdraw (POST) ====================
+
+export interface WithdrawRequest {
+  user_id: number;
+  card_number: string;
+  bank_name: string;
+}
+
+export interface WithdrawResponse {
+  detail: string;
+}
+
+export const useWithdraw = (
+  options?: UseMutationOptions<WithdrawResponse, ErrorResponse, WithdrawRequest>
+) => {
+  return useMutation<WithdrawResponse, ErrorResponse, WithdrawRequest>(
+    async (data) => {
+      const response = await apiClient.post<WithdrawResponse>('/withdraw', data);
+      return response.data;
+    },
+    options
+  );
+};
+
+// ==================== /info/promotion ====================
+
+export interface PromotionParams {
+  user_id: number;
+}
+
+export interface PromotionInfo {
+  text: string;
+  current_status: string;
+}
+
+export const useGetPromotionInfo = (
+  params: PromotionParams,
+  options?: UseQueryOptions<PromotionInfo, ErrorResponse>
+) => {
+  return useQuery<PromotionInfo, ErrorResponse>(
+    ['getPromotionInfo', params],
+    async () => {
+      const response = await apiClient.get<PromotionInfo>('/info/promotion', {
+        params,
+      });
+      return response.data;
+    },
+    options
   );
 };

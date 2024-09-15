@@ -1,11 +1,13 @@
 /// <reference types="vite-plugin-svgr/client" />
-import { useState } from 'react';
-import { Modal, Button } from 'antd';
+import { Button } from 'antd';
 import UmtIcon from '../Icons/umtIcon.svg?react';
 import RubbleIcon from '../Icons/rubbleIcon.svg?react';
 import InfoIcon from '../Icons/info.svg?react';
+import { useGetTgUser } from '../api';
 
 export const BalanceCard = ({showBalanceInfo}: {showBalanceInfo: () => void}) => {
+  const {data} = useGetTgUser();
+
   return (
     <div className="balance-container">
       <div className="balance-info">
@@ -13,11 +15,11 @@ export const BalanceCard = ({showBalanceInfo}: {showBalanceInfo: () => void}) =>
         <div className="balance-amount">
           <div className="currency">
             <RubbleIcon className="currency-icon" />
-            <span className="currency-value">1000</span>
+            <span className="currency-value">{data?.balance_rub}</span>
           </div>
           <div className="currency">
             <UmtIcon className="currency-icon" />
-            <span className="currency-value">850</span>
+            <span className="currency-value">{data?.balance_umt}</span>
           </div>
         </div>
       </div>

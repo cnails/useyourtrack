@@ -11,6 +11,7 @@ import MenuSalaryIcon from './Icons/Menu/salary.svg?react';
 import { RulesPage } from './Components/RulesPage';
 import { ReferralPage } from './Components/ReferralPage';
 import { RevenuePage } from './Components/RevenuePage';
+import { useGetTgUser } from './api';
 
 const { Content, Footer } = Layout;
 
@@ -22,7 +23,7 @@ enum EPage {
   test = 'test',
 }
 
-const tabs = [
+const getTabs = (user_type?: string) => ([
   {
     key: EPage.main,
     label: 'Главная',
@@ -46,11 +47,14 @@ const tabs = [
   {
     key: EPage.test,
     label: 'Продвижение',
-    icon: <MenuPromotionIcon />
+    icon: <MenuPromotionIcon />,
+    enabled: user_type === 'musician'
   },
-]
+]);
 
 const App = () => {
+  const {data} = useGetTgUser();
+  const tabs = getTabs(data?.user_type).filter(({enabled}) => enabled ?? true);
   const [selectedPage, setSelectedPage] = useState<EPage>(EPage.main);
 
   const renderPage = () => {

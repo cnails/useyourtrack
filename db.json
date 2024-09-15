@@ -19,18 +19,18 @@
         "not_approved_tasks": 0
         }
     ],
-    "tasks": [
+    "get_task": [
         {
         "task_id": 1,
         "task_type": "track",
-        "image_url": "https://example.com/image1.jpg",
+        "image_url": "https://via.placeholder.com/400x200",
         "text": "Complete the task by listening to the track."
         },
         {
         "task_id": 2,
         "task_type": "custom_task",
-        "image_url": "https://example.com/image2.jpg",
-        "text": "Create a custom mix."
+        "image_url": "https://via.placeholder.com/300x200",
+        "text": "Ваша задача прослушать трек полностью без перематываний (иначе он не будет отображаться как прослушанный) и поставить лайк в 2-х местах: на трек и на альбом‼ После чего перейдите на главную (там, где 'Моя волна'), прокрутите немного вниз и перейдите раздел История, сделайте скриншот, как показано на образцах выше☝, и отправьте его в этот чат."
         }
     ],
     "levels": [

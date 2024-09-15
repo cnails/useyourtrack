@@ -1,0 +1,86 @@
+{
+    "users": [
+      {
+        "user_id": 1,
+        "user_type": "musician",
+        "level_id": 2,
+        "balance_rub": 1000,
+        "balance_umt": 500,
+        "approved_tasks": 10,
+        "not_approved_tasks": 2
+      },
+      {
+        "user_id": 2,
+        "user_type": "listener",
+        "level_id": 1,
+        "balance_rub": 500,
+        "balance_umt": 200,
+        "approved_tasks": 5,
+        "not_approved_tasks": 1
+      }
+    ],
+    "tasks": [
+      {
+        "task_id": 1,
+        "task_type": "track",
+        "image_url": "https://via.placeholder.com/400x200",
+        "text": "Listen to the new track"
+      },
+      {
+        "task_id": 2,
+        "task_type": "custom_task",
+        "image_url": "https://via.placeholder.com/300x200",
+        "text": "Complete the survey"
+      }
+    ],
+    "levels": [
+      {
+        "id": 1,
+        "level": 1,
+        "umt": 100,
+        "sub_rub": 200,
+        "sub_coins": 300,
+        "rub": 400,
+        "coins": 500
+      },
+      {
+        "id": 2,
+        "level": 2,
+        "umt": 200,
+        "sub_rub": 400,
+        "sub_coins": 600,
+        "rub": 800,
+        "coins": 1000
+      }
+    ],
+    "info": {
+      "rules": {
+        "text": "These are the rules..."
+      },
+      "balance": {
+        "text": "Your current balance..."
+      },
+      "referrals": {
+        "text": "Refer friends to earn more",
+        "referrals": 3,
+        "ref_link": "http://example.com/referral?code=abc123"
+      },
+      "withdraw": {
+        "text": "Withdraw your earnings",
+        "available_banks": ["Bank1", "Bank2", "Bank3"]
+      },
+      "promotion": {
+        "text": "Promotion info here",
+        "current_status": "Active"
+      }
+    },
+    "withdrawals": [
+      {
+        "user_id": 1,
+        "card_number": "1234567890123456",
+        "bank_name": "Bank1",
+        "status": "pending"
+      }
+    ]
+  }
+  
