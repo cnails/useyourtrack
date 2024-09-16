@@ -1,15 +1,13 @@
-import { Progress, Tooltip } from 'antd';
+import { Progress } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
 
 export const UserLevel = ({ levelName, currentLevel, maxLevel, experiencePercentage, onLevelClick }) => {
   return (
     <div className="user-level">
       <div className="level-header">
-        <Tooltip title="Нажмите, чтобы узнать больше о вашем уровне">
-          <span className="level-name" onClick={onLevelClick}>
-            {levelName} <RightOutlined />
-          </span>
-        </Tooltip>
+        <span className="level-name" onClick={onLevelClick}>
+          {levelName} <RightOutlined />
+        </span>
         <span className="level-info">Уровень <span className="level-counter">{currentLevel}/{maxLevel}</span></span>
       </div>
       <Progress

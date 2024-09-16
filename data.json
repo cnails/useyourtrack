@@ -3,7 +3,7 @@
       {
         "user_id": 1,
         "user_type": "musician",
-        "level_id": 2,
+        "level_id": 5,
         "balance_rub": 1000,
         "balance_umt": 500,
         "approved_tasks": 10,

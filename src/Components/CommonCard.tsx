@@ -1,12 +1,8 @@
-interface IProps {
-    className?: string;
-    children?: JSX.Element[] | JSX.Element;
-}
-
-export const CommonCard = ({className, children}: IProps) => {
+export const CommonCard = (props: any) => {
+    const {className, children} = props;
     const cn = ['rule-tile', className].join(' ');
     return (
-        <div className={cn}>
+        <div {...props} className={cn}>
             {children}
         </div>
     );

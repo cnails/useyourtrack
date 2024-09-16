@@ -1,12 +1,13 @@
 import { Typography, Row, Col } from 'antd';
-import { ThunderboltFilled } from '@ant-design/icons';
 import UmtIcon from '../Icons/umtIcon.svg?react';
 import RubbleIcon from '../Icons/rubbleIcon.svg?react';
 import { CommonCard } from './CommonCard';
+import { useGetTgUser } from '../api';
 
 const { Title, Paragraph } = Typography;
 
 export const BalanceInfo = ({close}: {close: () => void}) => {
+  const {data} = useGetTgUser();
   return (
     <div className="rules-page-container">
       <a onClick={close}>Вернуться</a>
@@ -17,11 +18,11 @@ export const BalanceInfo = ({close}: {close: () => void}) => {
             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <div style={{display: 'flex', alignItems: 'center'}}>
                     <UmtIcon className="BalanceInfo_currency-icon" />
-                    <div className="BalanceInfo_currency-value">25500</div>
+                    <div className="BalanceInfo_currency-value">{data?.balance_rub}</div>
                 </div>
                 <div style={{display: 'flex', alignItems: 'center'}}>
                     <RubbleIcon className="BalanceInfo_currency-icon" />
-                    <div className="BalanceInfo_currency-value">7100</div>
+                    <div className="BalanceInfo_currency-value">{data?.balance_umt}</div>
                 </div>
             </div>
         </Col>

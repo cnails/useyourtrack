@@ -7,6 +7,12 @@ import { CommonCard } from './CommonCard';
 const { Title, Paragraph } = Typography;
 
 export const ReferralPage = () => {
+  const onClick = () => {
+    const inviteMessage = "Привет! Присоединяйся к нашему сообществу на сайте! Вот ссылка: https://example.com";
+    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent('https://example.com')}&text=${encodeURIComponent(inviteMessage)}`;
+
+    window.open(telegramUrl, '_blank');
+  }
   return (
     <div className="referral-page-container">
       <Title level={2} className="rules-title">Пригласите друзей!</Title>
@@ -54,13 +60,8 @@ export const ReferralPage = () => {
       </Row>
       <Row gutter={16}>
         <Col span={24}>
-            <CommonCard className="referralButton">
-                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} onClick={() => {
-                  const inviteMessage = "Привет! Присоединяйся к нашему сообществу на сайте! Вот ссылка: https://example.com";
-                  const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent('https://example.com')}&text=${encodeURIComponent(inviteMessage)}`;
-              
-                  window.open(telegramUrl, '_blank');
-                }}>
+            <CommonCard className="referralButton" onClick={onClick}>
+                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                   <Title level={2} className="rules-title" style={{fontSize: '16px', fontWeight: 600, paddingTop: '8px'}}>Пригласить друга</Title>
                   <TelegramIcon style={{marginLeft: '10px'}} />
                 </div>

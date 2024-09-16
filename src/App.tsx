@@ -12,6 +12,7 @@ import { RulesPage } from './Components/RulesPage';
 import { ReferralPage } from './Components/ReferralPage';
 import { RevenuePage } from './Components/RevenuePage';
 import { useGetTgUser } from './api';
+import { PromotePage } from './Components/PromotePage';
 
 const { Content, Footer } = Layout;
 
@@ -20,7 +21,7 @@ enum EPage {
   rules = 'rules',
   referral = 'referral',
   revenue = 'revenue',
-  test = 'test',
+  promotion = 'promotion',
 }
 
 const getTabs = (user_type?: string) => ([
@@ -45,7 +46,7 @@ const getTabs = (user_type?: string) => ([
     icon: <MenuSalaryIcon />
   },
   {
-    key: EPage.test,
+    key: EPage.promotion,
     label: 'Продвижение',
     icon: <MenuPromotionIcon />,
     enabled: user_type === 'musician'
@@ -67,6 +68,8 @@ const App = () => {
         return <ReferralPage />
       case EPage.revenue:
         return <RevenuePage />
+      case EPage.promotion:
+        return <PromotePage />
       default:
         break;
     }
