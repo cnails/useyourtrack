@@ -43,7 +43,7 @@ const getTabs = (user_type?: string) => ([
   {
     key: EPage.revenue,
     label: 'Вывод средств',
-    icon: <MenuSalaryIcon />
+    icon: <MenuSalaryIcon style={{minHeight: '30px'}} />
   },
   {
     key: EPage.promotion,

@@ -56,7 +56,7 @@ export const TaskModal = ({onClose}: {onClose: () => void}) => {
   подробную инструкцию по выполнению</a>
           <p style={{textAlign: "center"}}>
               <span style={{color: 'white', fontWeight: 500}}>Обратите внимание!</span><br />
-              {WebApp.initData} На скриншоте должен быть виден лайк и видно, что трек находится в списке прослушанных.</p>
+              На скриншоте должен быть виден лайк и видно, что трек находится в списке прослушанных.</p>
           </div>
           <div className="modal-buttons">
           <Button className="link-button taskModal_button" type="primary" onClick={handleTrackUrlClick}>Ссылка на трек</Button>

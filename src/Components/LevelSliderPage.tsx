@@ -12,7 +12,7 @@ const RUB_REWARD_WITH_SUB = 7;
 const UMT_REWARD_WITH_SUB = 25;
 const RUB_REWARD_WITHOUT_SUB = 4;
 
-export const LevelSliderPage = () => {
+export const LevelSliderPage = ({close}: {close: () => void}) => {
   const [selectedLevel, setSelectedLevel] = useState(0);
   const {data} = useGetTgUser();
   const carouselRef = useRef<any>(null); // Реф для управления каруселью
@@ -33,11 +33,12 @@ export const LevelSliderPage = () => {
 
   return (
     <div className="referral-page-container">
+      <a onClick={close} style={{display: 'inline-block', marginBottom: '10px'}}>Вернуться</a>
       <Title level={2} className="rules-title" style={{marginBottom: '30px'}}>Уровни в приложении</Title>
       <div className="slider-container">
-        <button className="slider-button left" onClick={prev}>
+        {selectedLevel !== 0 && (<button className="slider-button left" onClick={prev}>
           <ArrowLeft />
-        </button>
+        </button>)}
         {/* <Carousel arrows infinite={false} beforeChange={handleChange} prevArrow={<ArrowLeft />} nextArrow={<ArrowRight />}> */}
         <Carousel style={{overflow: 'visible'}} ref={carouselRef} arrows infinite={false} beforeChange={handleChange} prevArrow={<></>} nextArrow={<></>}>
           {levelsInfo.map(({imageSrc, color_1, color_2, title}) => {
@@ -50,9 +51,9 @@ export const LevelSliderPage = () => {
             );
           })}
         </Carousel>
-        <button className="slider-button right" onClick={next}>
+        {selectedLevel !== (levelsInfo.length - 1) && (<button className="slider-button right" onClick={next}>
           <ArrowRight />
-        </button>
+        </button>)}
       </div>
       <Row gutter={[16, 16]} style={{paddingTop: '24px'}}>
         <Col span={12}>
@@ -75,7 +76,7 @@ export const LevelSliderPage = () => {
             <CommonCard className="referralButton">
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%'}}>
                   <div style={{textAlign: 'left', marginRight: '8px'}}>Eсли есть подписка<br/>на Я.музыку</div>
-                  <div>задания по {RUB_REWARD_WITH_SUB + selectedLevel}₽ + {UMT_REWARD_WITH_SUB + 5 * selectedLevel}umt</div>
+                  <div style={{color: '#EF807B'}}>задания по {RUB_REWARD_WITH_SUB + selectedLevel}₽ + {UMT_REWARD_WITH_SUB + 5 * selectedLevel}umt</div>
                 </div>
             </CommonCard>
         </Col>
@@ -85,7 +86,7 @@ export const LevelSliderPage = () => {
             <CommonCard className="referralButton">
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%'}}>
                   <div style={{textAlign: 'left', marginRight: '8px'}}>Eсли нет подписки<br/>на Я.музыку</div>
-                  <div>задания по {RUB_REWARD_WITHOUT_SUB}₽ + {UMT_REWARD_WITH_SUB + 5 * selectedLevel - 10}umt</div>
+                  <div style={{color: '#EF807B'}}>задания по {RUB_REWARD_WITHOUT_SUB}₽ + {UMT_REWARD_WITH_SUB + 5 * selectedLevel - 10}umt</div>
                 </div>
             </CommonCard>
         </Col>

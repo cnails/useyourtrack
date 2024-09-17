@@ -31,7 +31,7 @@ export const UserProfile = () => {
   }
 
   if (isLevelSliderOpen) {
-    return <LevelSliderPage />
+    return <LevelSliderPage close={() => setIsLevelSliderOpen(false)} />
   }
 
   return (

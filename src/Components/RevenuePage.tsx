@@ -2,6 +2,7 @@ import { Typography, Row, Col, Input, Form, Checkbox, Button } from 'antd';
 import { CommonCard } from './CommonCard';
 import CardNumberInput from './InputMask';
 import { useState } from 'react';
+import WebApp from '@twa-dev/sdk';
 
 const { Title, Paragraph } = Typography;
 
@@ -18,6 +19,7 @@ export const RevenuePage = () => {
     const handleSubmit = () => {
         if (!checked) {
             setIsInvalidCheckbox(true);
+            WebApp.HapticFeedback.impactOccurred('medium');
             return;
         }
       alert('Вы согласились с обработкой персональных данных!');
@@ -66,7 +68,7 @@ export const RevenuePage = () => {
         <Form onFinish={handleSubmit} style={{paddingTop: '15px'}}>
             <Form.Item>
                 <Checkbox checked={checked} onChange={handleChange} className={`custom-checkbox ${isInvalidCheckbox ? 'invalid-checkbox' : ''}`}>
-                    <span style={{lineHeight: '30px', color: 'white'}}>Согласен с обработкой персональных данных</span>
+                    <span style={{lineHeight: '24px', color: 'white'}}>Согласен с обработкой персональных данных</span>
                 </Checkbox>
             </Form.Item>
 

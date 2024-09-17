@@ -2,6 +2,8 @@ import axios from 'axios';
 import { useQuery, useMutation, UseQueryOptions, UseMutationOptions } from 'react-query';
 import { getUserId } from './Utils/utils';
 
+const isMock = false;
+
 // Создаем экземпляр axios с базовым URL
 const apiClient = axios.create({
   baseURL: 'http://localhost:3001', // Замените на ваш базовый URL API
@@ -40,6 +42,9 @@ export const useGetTgUser = (
   return useQuery<GetTgUserResponse, ErrorResponse>(
     ['getTgUser'],
     async () => {
+      if (isMock) {
+        return {user_id: 1, user_type: 'musician', level_id: 5, balance_rub: '75', balance_umt: '140', approved_tasks: '5'}
+      }
       const response = await apiClient.get<GetTgUserResponse>('/get_tg_user', {
         params: {
           user_id,
@@ -71,6 +76,9 @@ export const useGetTask = (
   return useQuery<GetTaskResponse, ErrorResponse>(
     ['getTask', params],
     async () => {
+      if (isMock) {
+        return {task_id: 13, task_type: 'track', image_url: 'https://via.placeholder.com/400x200', text: 'Ваша задача прослушать трек полностью без перематываний (иначе он не будет отображаться как прослушанный) и поставить лайк в 2-х местах: на трек и на альбом‼ После чего перейдите на главную (там, где "Моя волна"), прокрутите немного вниз и перейдите раздел История, сделайте скриншот, как показано на образцах выше☝, и отправьте его в этот чат.'}
+      }
       const response = await apiClient.get<GetTaskResponse>('/get_task', {
         params,
       });

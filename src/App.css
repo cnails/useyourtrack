@@ -14,6 +14,11 @@
   padding: 12px;
 }
 
+.ant-tabs-nav-list {
+  width: 100%;
+  justify-content: space-around;
+}
+
 .ant-tabs-tab-btn {
   display: flex;
   flex-direction: column;
@@ -704,6 +709,7 @@
 
 .level-info-text {
   justify-content: center;
+  color: #EF807B;
 }
 
 .levelSlider {
@@ -799,4 +805,118 @@
   margin-top: 50px;
   font-weight: 500;
   text-align: center;
+} 
+
+.promote-card-info-list {
+  position: relative;
+  text-align: left;
+  padding-left: 8px;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.promote-card-info-list::before {
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: 9px;
+  width: 3px;
+  height: 3px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.promote-card-price-with-button {
+  display: flex;
+  flex-direction: column;
+  margin-left: 18px;
+  height: 100%;
+  justify-content: end;
+}
+
+.promote-card-price-with-button > span {
+  color: #BFFF98;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.promote-button {
+  background: #fff;
+  color: #000;
+  width: 120px;
+  height: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+}
+
+.promote-card-bonus {
+  display: flex;
+  justify-content: space-between;
+  color: #FFEA7C;
+  padding-top: 12px;
+  border-top: 1px rgba(255, 255, 255, 0.20) solid;
+  margin-top: 16px;
+}
+
+.promote-card {
+  display: flex;
+}
+
+/* DarkSegmented.css */
+
+.dark-segmented {
+  margin-top: 24px;
+
+  /* Включаем темную тему с помощью CSS-переменных */
+  --ant-segmented-bg: #32363C; /* Темный фон для сегментов */
+  --ant-segmented-color: #ffffff; /* Белый цвет текста сегментов */
+  --ant-segmented-thumb-bg: #000; /* Цвет фона активного сегмента */
+  --ant-segmented-thumb-color: #000; /* Цвет текста активного сегмента */
+  --ant-segmented-thumb-border-radius: 8px; /* Закругленные углы активного сегмента */
+  --ant-segmented-thumb-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45); /* Тень для активного сегмента */
+  --ant-segmented-item-color: #cccccc; /* Цвет текста неактивных сегментов */
+  --ant-segmented-item-hover-bg: #333333; /* Фон сегмента при наведении */
+}
+
+.ant-segmented-item-selected {
+  background-color: #16181E !important;
+  color: #fff !important;
+}
+.ant-segmented-item {
+  display: flex;
+  align-items: center;
+  border-radius: 10px !important;
+  padding: 8px 0 !important;
+  width: 33%;
+}
+
+.ant-segmented-thumb {
+  background-color: #16181E !important;
+}
+
+.ant-segmented-item-label {
+  white-space: wrap !important;
+  color: #fff !important;
+  line-height: 18px !important;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.custom-segmented {
+  display: inline-flex;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: var(--ant-segmented-bg);
+  color: var(--ant-segmented-color);
+}
+
+.promote-card-subTitle {
+  font-size: 13px;
+  font-weight: 300;
+  text-align: left;
+  margin-top: 4px;
 }
