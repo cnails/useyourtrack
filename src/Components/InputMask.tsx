@@ -12,7 +12,7 @@ const formatCardNumber = (value: string) => {
 };
 
 // Алгоритм Луна для валидации номера карты
-const validateCardNumber = (cardNumber: string) => {
+export const validateCardNumber = (cardNumber: string) => {
     const cleaned = cardNumber.replace(/\D/g, ''); // Удаление пробелов и нечисловых символов
     let sum = 0;
     let shouldDouble = false;
@@ -36,7 +36,7 @@ const validateCardNumber = (cardNumber: string) => {
     return sum % 10 === 0;
 };
 
-const CardNumberInput: React.FC = () => {
+const CardNumberInput = ({onChangeCardNumber}: {onChangeCardNumber: (cardNumber: string) => void}) => {
   const [cardNumber, setCardNumber] = useState('');
   const inputRef = useRef<HTMLInputElement>(null); // Реф для инпута
 
@@ -50,6 +50,7 @@ const CardNumberInput: React.FC = () => {
 
     // Устанавливаем новое значение
     setCardNumber(formattedValue);
+    onChangeCardNumber(formattedValue)
 
     // Корректируем позицию курсора после добавления/удаления пробелов
     const newCursorPos = start + (formattedValue.split(' ').length - rawValue.split(' ').length);
@@ -60,16 +61,6 @@ const CardNumberInput: React.FC = () => {
         inputRef.current.selectionStart = inputRef.current.selectionEnd = newCursorPos;
       }
     }, 0);
-  };
-
-  // Пример простой валидации (например, если не 16 цифр)
-  const handleSubmit = () => {
-    const cleaned = cardNumber.replace(/\D/g, '');
-    if (validateCardNumber(cleaned)) {
-      alert('Номер карты валиден');
-    } else {
-      alert('Номер карты не валиден');
-    }
   };
 
   return (

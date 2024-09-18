@@ -1,28 +1,38 @@
-import { Typography, Row, Col, Input, Form, Checkbox, Button } from 'antd';
+import { Typography, Row, Col, Input, Form, Checkbox, Button, Card, message } from 'antd';
 import { CommonCard } from './CommonCard';
-import CardNumberInput from './InputMask';
+import CardNumberInput, { validateCardNumber } from './InputMask';
 import { useState } from 'react';
+import CrossIcon from '../Icons/cross.svg?react';
 import WebApp from '@twa-dev/sdk';
+import { useGetTgUser } from '../api';
 
 const { Title, Paragraph } = Typography;
 
 export const RevenuePage = () => {
     const [checked, setChecked] = useState(false);
-    const [isInvalidCheckbox, setIsInvalidCheckbox] = useState(false);    
+    const [isInvalidCheckbox, setIsInvalidCheckbox] = useState(false);
+    const [isCustomCardExpanded, setIsCustomCardExpanded] = useState(false);
+    const [cardNumber, setCardNumber] = useState('');
+    const [bankName, setBankName] = useState('');
+    const {data: userData} = useGetTgUser();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setChecked(e.target.checked);
       setIsInvalidCheckbox(false);
-        // TODO: валидация на два инпута
     };
   
     const handleSubmit = () => {
-        if (!checked) {
+        const cleanedCardNumber = cardNumber.replace(/\D/g, '');
+
+        if (!validateCardNumber(cleanedCardNumber)) {
+            message.error('Пожалуйста, укажите корректный номер карты.');
+        } else if (bankName.length <= 3) {
+            message.error('Пожалуйста, укажите корректное наименование банка.');
+        } else if (!checked) {
             setIsInvalidCheckbox(true);
-            WebApp.HapticFeedback.impactOccurred('medium');
-            return;
+        } else {
+            setIsCustomCardExpanded(true);
         }
-      alert('Вы согласились с обработкой персональных данных!');
     };
 
     return (
@@ -53,7 +63,7 @@ export const RevenuePage = () => {
         <Row gutter={16}>
             <Col span={24}>
                 <CommonCard className="referralButton">
-                    <CardNumberInput />
+                    <CardNumberInput onChangeCardNumber={setCardNumber} />
                 </CommonCard>
             </Col>
             <Col span={24}>
@@ -61,23 +71,42 @@ export const RevenuePage = () => {
                 <Input
                     placeholder="Наименование банка"
                     className='resetInputStyles'
+                    onChange={(e) => setBankName(e.target.value)}
                 />
                 </CommonCard>
             </Col>
         </Row>
         <Form onFinish={handleSubmit} style={{paddingTop: '15px'}}>
-            <Form.Item>
+            <Form.Item style={{marginBottom: '15px'}}>
                 <Checkbox checked={checked} onChange={handleChange} className={`custom-checkbox ${isInvalidCheckbox ? 'invalid-checkbox' : ''}`}>
-                    <span style={{lineHeight: '24px', color: 'white'}}>Согласен с обработкой персональных данных</span>
+                    <span style={{fontSize: '13px', color: 'white', opacity: '0.5'}}>согласен с обработкой персональных данных</span>
                 </Checkbox>
             </Form.Item>
 
             <Form.Item>
-                <Button type="primary" htmlType="submit" className='revenueMainButton'>
+                <Button type="primary" htmlType="submit" className='mainButton'>
                     Вывести
                 </Button>
             </Form.Item>
         </Form>
+        {isCustomCardExpanded && (
+            <>
+                <div style={{position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', backgroundColor: 'rgba(0, 0, 0, 0.5)'}} />
+                {/* 66px - высота меню */}
+                <div className='revenueExpandedCard'>
+                    <Card className="custom-card" style={{'--color-1': '#46FF40', '--color-2': '#12940E'}}>
+                        <div style={{width: '100%', display: 'flex', justifyContent: 'end', margin: '-45px 0 8px 0'}}>
+                            <CrossIcon onClick={() => setIsCustomCardExpanded(false)} />
+                        </div>
+                        <div style={{fontSize: '38px'}}>{userData?.balance_rub! >= 400 ? '🔎' : '❌'}</div>
+                        <div style={{color: '#fff', fontSize: '30px', fontWeight: '600', paddingTop: '10px'}}>{userData?.balance_rub! >= 400 ? 'Ваша заявка отправлена на проверку' : 'Вывод доступен от 400₽'}</div>
+                        <Button type="primary" htmlType="submit" className='mainButton revenueExpandedButton' onClick={() => setIsCustomCardExpanded(false)}>
+                            Продолжить
+                        </Button>
+                    </Card>
+                </div>
+            </>
+        )}
     </div>
   );
 };

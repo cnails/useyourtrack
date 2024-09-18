@@ -1,5 +1,5 @@
 import { Card, Typography } from 'antd';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { TaskModal } from './TaskModal';
 import CrossIcon from '../Icons/cross.svg?react';
 import useCachedImage from '../Utils/useCachedImage';

@@ -496,7 +496,7 @@
   box-shadow: none;
 }
 
-.revenueMainButton {
+.mainButton {
   border-radius: 10px;
   background: #8AFF43 !important;
   color: #000 !important;
@@ -504,6 +504,17 @@
   font-size: 16px;
   width: 100%;
   padding: 30px;
+}
+
+.revenueExpandedButton {
+  margin-top: 100px;
+  color: #84CB69 !important;
+  background: #32363C !important;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
 }
 
 .custom-checkbox .ant-checkbox-inner {
@@ -610,19 +621,19 @@
 
 /* Стили для кнопок */
 .link-button {
-  background-color: #417B1E; /* Зеленая кнопка */
+  background-color: #417B1E !important; /* Зеленая кнопка */
   height: 52px;
-  color: #fff;
+  color: #fff !important;
 }
 
 .upload-button {
-  background-color: #8AFF43; /* Светло-зеленая кнопка */
-  color: #000;
+  background-color: #8AFF43 !important; /* Светло-зеленая кнопка */
+  color: #000 !important;
 }
 
 .skip-button {
-  background-color: #32363C; /* Серая кнопка */
-  color: #84CB69;
+  background-color: #32363C !important; /* Серая кнопка */
+  color: #84CB69 !important;
 }
 
 /* FullScreenImage.css */
@@ -661,8 +672,7 @@
 
 .gradient-circle {
   position: absolute;
-  top: 40px;
-  left: 37px;
+  top: 55px;
   overflow: visible;
   width: 240px;
   height: 240px;
@@ -919,4 +929,23 @@
   font-weight: 300;
   text-align: left;
   margin-top: 4px;
+}
+
+.revenueExpandedCard {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  animation-name: revenueArise;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes revenueArise {
+  0% {
+    bottom: -400px;
+  }
+  
+  100% {
+    bottom: 66px;
+  }
 }

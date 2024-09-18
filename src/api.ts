@@ -42,9 +42,9 @@ export const useGetTgUser = (
   return useQuery<GetTgUserResponse, ErrorResponse>(
     ['getTgUser'],
     async () => {
-      if (isMock) {
-        return {user_id: 1, user_type: 'musician', level_id: 5, balance_rub: '75', balance_umt: '140', approved_tasks: '5'}
-      }
+      // if (isMock) {
+      //   return {user_id: 1, user_type: 'musician', level_id: 5, balance_rub: '75', balance_umt: '140', approved_tasks: '5'}
+      // }
       const response = await apiClient.get<GetTgUserResponse>('/get_tg_user', {
         params: {
           user_id,
@@ -64,6 +64,7 @@ export interface GetTaskParams {
 
 export interface GetTaskResponse {
   task_id: number;
+  // TOOD: что зависит от task_type?
   task_type: 'track' | 'custom_task' | 'side_task';
   image_url: string;
   text: string;

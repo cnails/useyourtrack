@@ -24,6 +24,7 @@ export const TaskModal = ({onClose}: {onClose: () => void}) => {
   };
 
   const handleTrackUrlClick = () => {
+    // TODO: нет ссылки на трек
     // open url
   }
 
@@ -34,7 +35,7 @@ export const TaskModal = ({onClose}: {onClose: () => void}) => {
 
   return (
     <>
-      <ReportUploadModal isOpen={isModalOpen} onClose={handleClose} task_id={data?.task_id!} />
+      <ReportUploadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} task_id={data?.task_id!} />
       <div className="modal-content">
           <div className="image-container">
               {loading && (

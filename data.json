@@ -4,8 +4,8 @@
         "user_id": 1,
         "user_type": "musician",
         "level_id": 5,
-        "balance_rub": 1000,
-        "balance_umt": 500,
+        "balance_rub": 320,
+        "balance_umt": 1000,
         "approved_tasks": 10,
         "not_approved_tasks": 2
       },
@@ -13,7 +13,7 @@
         "user_id": 2,
         "user_type": "listener",
         "level_id": 1,
-        "balance_rub": 500,
+        "balance_rub": 300,
         "balance_umt": 200,
         "approved_tasks": 5,
         "not_approved_tasks": 1
