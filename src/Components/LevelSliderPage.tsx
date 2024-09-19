@@ -6,7 +6,7 @@ import { levelsInfo } from './MainTask';
 import { useRef, useState } from 'react';
 import { useGetTgUser } from '../api';
 
-const { Title, Paragraph } = Typography;
+const { Title } = Typography;
 
 const RUB_REWARD_WITH_SUB = 7;
 const UMT_REWARD_WITH_SUB = 25;

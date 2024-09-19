@@ -1,8 +1,4 @@
 import { Typography, Row, Col, Segmented } from 'antd';
-import { ThunderboltFilled } from '@ant-design/icons';
-import UmtIcon from '../Icons/umtIcon.svg?react';
-import CardIcon from '../Icons/card.svg?react';
-import RubbleIcon from '../Icons/rubbleIcon.svg?react';
 import { CommonCard } from './CommonCard';
 import { useState } from 'react';
 import WebApp from '@twa-dev/sdk';

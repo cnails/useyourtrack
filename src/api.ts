@@ -64,7 +64,8 @@ export interface GetTaskParams {
 
 export interface GetTaskResponse {
   task_id: number;
-  // TOOD: что зависит от task_type?
+  // TODO: что зависит от task_type?
+  // TODO: информация о сборе обратной связи? + куда ее отправлять
   task_type: 'track' | 'custom_task' | 'side_task';
   image_url: string;
   text: string;

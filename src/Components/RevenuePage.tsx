@@ -3,7 +3,6 @@ import { CommonCard } from './CommonCard';
 import CardNumberInput, { validateCardNumber } from './InputMask';
 import { useState } from 'react';
 import CrossIcon from '../Icons/cross.svg?react';
-import WebApp from '@twa-dev/sdk';
 import { useGetTgUser } from '../api';
 
 const { Title, Paragraph } = Typography;
@@ -93,7 +92,7 @@ export const RevenuePage = () => {
             <>
                 <div style={{position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', backgroundColor: 'rgba(0, 0, 0, 0.5)'}} />
                 {/* 66px - высота меню */}
-                <div className='revenueExpandedCard'>
+                <div className='revenueExpandedCard expandedCard'>
                     <Card className="custom-card" style={{'--color-1': '#46FF40', '--color-2': '#12940E'}}>
                         <div style={{width: '100%', display: 'flex', justifyContent: 'end', margin: '-45px 0 8px 0'}}>
                             <CrossIcon onClick={() => setIsCustomCardExpanded(false)} />

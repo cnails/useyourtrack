@@ -1,26 +1,27 @@
-import { Modal, Button, Spin } from 'antd';
+import { Button, Spin } from 'antd';
 import { useState } from 'react';
 import { FullScreenImage } from './FullScreenImage';
 import { useGetTask, usePostTask } from '../api';
-import WebApp from '@twa-dev/sdk';
 import { getUserId, invalidateQuery } from '../Utils/utils';
 import { ReportUploadModal } from './ReportUploadModal';
+import { ReviewModal } from './ReviewModal';
 
 export const TaskModal = ({onClose}: {onClose: () => void}) => {
   const userId = getUserId();
   // после мутации инвалидировать
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const {isLoading, data} = useGetTask({user_id: userId});
+  const {data} = useGetTask({user_id: userId});
   const postMutation = usePostTask();
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+
+  const onSuccess = () => {
+    setIsReviewModalOpen(true);
+  }
 
   const [loading, setLoading] = useState(true); // Состояние для загрузки изображения
 
   const handleImageLoad = () => {
     setLoading(false); // Когда изображение загрузилось, выключаем загрузку
-  };
-
-  const handleClose = () => {
-    onClose();
   };
 
   const handleTrackUrlClick = () => {
@@ -35,7 +36,8 @@ export const TaskModal = ({onClose}: {onClose: () => void}) => {
 
   return (
     <>
-      <ReportUploadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} task_id={data?.task_id!} />
+      <ReportUploadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} task_id={data?.task_id!} onSuccess={onSuccess} />
+      <ReviewModal isOpen={isReviewModalOpen} />
       <div className="modal-content">
           <div className="image-container">
               {loading && (
@@ -53,11 +55,12 @@ export const TaskModal = ({onClose}: {onClose: () => void}) => {
           </div>
           <div className="modal-text-block">
           <p>{data?.text}</p>
-          <a href="https://telegra.ph/Kak-pravilno-delat-otchyoty-o-proslushannyh-trekah-dlya-Use-My-Track-06-20">Нажмите на этот текст, чтобы прочитать
-  подробную инструкцию по выполнению</a>
+          <a href="https://telegra.ph/Kak-pravilno-delat-otchyoty-o-proslushannyh-trekah-dlya-Use-My-Track-06-20">Нажмите на этот текст, чтобы прочитать подробную инструкцию по выполнению</a>
           <p style={{textAlign: "center"}}>
-              <span style={{color: 'white', fontWeight: 500}}>Обратите внимание!</span><br />
-              На скриншоте должен быть виден лайк и видно, что трек находится в списке прослушанных.</p>
+              <span style={{color: 'white', fontWeight: 500}}>Обратите внимание!</span>
+              <br />
+              На скриншоте должен быть виден лайк и видно, что трек находится в списке прослушанных.
+            </p>
           </div>
           <div className="modal-buttons">
           <Button className="link-button taskModal_button" type="primary" onClick={handleTrackUrlClick}>Ссылка на трек</Button>

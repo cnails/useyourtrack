@@ -931,13 +931,23 @@
   margin-top: 4px;
 }
 
-.revenueExpandedCard {
+.expandedCard {
   position: absolute;
   left: 0;
   width: 100%;
-  animation-name: revenueArise;
   animation-duration: .5s;
   animation-fill-mode: forwards;
+}
+
+.revenueExpandedCard {
+  animation-name: revenueArise;
+}
+
+.onboardingExpandedCard {
+  animation-name: onboardingArise;
+  height: calc(100vh - 25px);
+  bottom: 0px;
+  z-index: 2;
 }
 
 @keyframes revenueArise {
@@ -948,4 +958,32 @@
   100% {
     bottom: 66px;
   }
+}
+
+.onboardingCarouselContentWrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.onboarding .slick-slider {
+  padding: 30px 0 50px;
+}
+
+.onboardingCarouselText {
+  color: #fff;
+  text-align: left;
+  padding-left: 24px;
+}
+
+.onboardingCarouselStep {
+  border: 1px #8AFF43 solid;
+  border-radius: 50%;
+  min-width: 40px;  
+  height: 40px;
+  display: flex;
+  align-items: center;  
+  justify-content: center;  
+  color: #fff;
 }

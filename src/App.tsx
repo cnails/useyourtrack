@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Layout, Tabs } from 'antd';
+import { Button, Card, Layout, Tabs } from 'antd';
 import 'antd/dist/reset.css';  // сброс стилей
 import './App.css';
 import { UserProfile } from './Components/UserProfile';
@@ -13,6 +13,7 @@ import { ReferralPage } from './Components/ReferralPage';
 import { RevenuePage } from './Components/RevenuePage';
 import { useGetTgUser } from './api';
 import { PromotePage } from './Components/PromotePage';
+import { Onboarding } from './Components/Onboarding';
 
 const { Content, Footer } = Layout;
 
@@ -84,6 +85,9 @@ const App = () => {
           {renderPage()}
         </div>
       </Content>
+
+      {/* TODO: получение и сохранение факта онбординга пользователя */}
+      <Onboarding needToShow={true} />
 
       {/* Футер с меню */}
       <Footer style={{ backgroundColor: '#32363C', borderTopLeftRadius: '12px', borderTopRightRadius: '12px', textAlign: 'center', position: 'sticky', bottom: '-1px', zIndex: 1, padding: '0 8px'}}>

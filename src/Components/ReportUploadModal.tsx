@@ -4,28 +4,30 @@ import { PlusOutlined } from '@ant-design/icons';
 import { usePostTask } from '../api';
 import { getUserId } from '../Utils/utils';
 
-export const ReportUploadModal = ({isOpen, onClose, task_id}: {isOpen: boolean, onClose: () => void, task_id: number}) => {
-  const [fileList, setFileList] = useState([]);
-  const [previewOpen, setPreviewOpen] = useState(false);
-  const [previewImage, setPreviewImage] = useState('');
-  const user_id = getUserId();
-  const postMutation = usePostTask();
+export const ReportUploadModal = ({isOpen, onClose, task_id, onSuccess}: {isOpen: boolean, onClose: () => void, task_id: number, onSuccess: () => void}) => {
+    const [fileList, setFileList] = useState([]);
+    const [previewOpen, setPreviewOpen] = useState(false);
+    const [previewImage, setPreviewImage] = useState('');
+    const user_id = getUserId();
+    const postMutation = usePostTask();
 
-  const handleOk = () => {
-    if (fileList.length === 0) {
-      message.error('Пожалуйста, загрузите изображение перед отправкой.');
-      return;
-    }
-    postMutation.mutate({user_id, task_id, image_url: (fileList[0] as any).thumbUrl})
-    onClose();
-    setFileList([]);
-    message.success('Отчет успешно отправлен!');
-  };
+    const handleOk = () => {
+        if (fileList.length === 0) {
+            message.error('Пожалуйста, загрузите изображение перед отправкой.');
+            return;
+        }
+        // TODO: По идеи в ответ на данный пост запрос должен приходить факт необходимости оценки трека?
+        postMutation.mutate({user_id, task_id, image_url: (fileList[0] as any).thumbUrl});
+        onClose();
+        setFileList([]);
+        onSuccess();
+        message.success('Отчет успешно отправлен!');
+    };
 
-  const handleCancel = () => {
-    onClose();
-    setFileList([]);
-  };
+    const handleCancel = () => {
+        onClose();
+        setFileList([]);
+    };
 
     const handleChange = ({ fileList: newFileList }: any) =>
         setFileList(newFileList);
