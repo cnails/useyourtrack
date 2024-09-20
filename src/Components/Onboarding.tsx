@@ -44,7 +44,7 @@ export const Onboarding = ({needToShow}: {needToShow: boolean}) => {
             <Card className="custom-card onboarding" style={{'--color-1': '#46FF40', '--color-2': '#12940E'}}>
                 {/* <div style={{fontSize: '38px'}}>{userData?.balance_rub! >= 400 ? '🔎' : '❌'}</div>
                 <div style={{color: '#fff', fontSize: '30px', fontWeight: '600', paddingTop: '10px'}}>{userData?.balance_rub! >= 400 ? 'Ваша заявка отправлена на проверку' : 'Вывод доступен от 400₽'}</div> */}
-                <div style={{fontSize: '30px', fontWeight: '600', color: '#fff', lineHeight: '35px'}}>Добро пожаловать на сервис</div>
+                <div style={{fontSize: '30px', fontWeight: '600', color: '#fff', lineHeight: '35px'}}>Добро пожаловать<br />на сервис</div>
                 <br />
                 <LogoIcon />
                 <Carousel style={{overflow: 'visible'}} ref={carouselRef} arrows infinite={false} beforeChange={handleChange} prevArrow={<></>} nextArrow={<></>}>

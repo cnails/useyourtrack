@@ -16,7 +16,7 @@ export const ReviewModal = ({isOpen}: {isOpen: boolean}) => {
                     {/* TODO: оценку можно просто пропустить? */}
                     <CrossIcon onClick={() => setIsOpen(false)} />
                 </div>
-                <div style={{fontSize: '38px'}}>{userData?.balance_rub! >= 400 ? '🔎' : '❌'}</div>
+                <div style={{fontSize: '38px'}}>👍🏼</div>
                 <div style={{color: '#fff', fontSize: '30px', fontWeight: '600', paddingTop: '10px'}}>Оцени трек<br />и оставь отзыв!</div>
                 <Button type="primary" htmlType="submit" className='mainButton revenueExpandedButton' onClick={() => {}}>
                     Отправить
