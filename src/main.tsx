@@ -18,6 +18,23 @@ export const queryClient = new QueryClient({
 WebApp.ready();
 WebApp.expand();
 
+const channel = new BroadcastChannel('telegram_webapp');
+
+channel.onmessage = (event) => {
+  if (event.data === 'close') {
+    WebApp.close();
+  }
+};
+
+// Отправляем сообщение о запуске инстанса
+channel.postMessage('new_instance');
+
+// Оповещаем другие вкладки закрыть приложение при открытии нового инстанса
+window.addEventListener('beforeunload', () => {
+  channel.postMessage('close');
+});
+
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
