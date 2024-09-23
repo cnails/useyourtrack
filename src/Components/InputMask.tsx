@@ -16,7 +16,10 @@ export const validateCardNumber = (cardNumber: string) => {
     const cleaned = cardNumber.replace(/\D/g, ''); // Удаление пробелов и нечисловых символов
     let sum = 0;
     let shouldDouble = false;
-  
+
+    if (!cleaned.length) {
+      return false;
+    }
     // Проход по цифрам с конца в начало
     for (let i = cleaned.length - 1; i >= 0; i--) {
       let digit = parseInt(cleaned[i], 10);

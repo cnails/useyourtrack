@@ -1,5 +1,5 @@
 import { Button, Card, Carousel } from "antd"
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import LogoIcon from '../Icons/logo.svg?react';
 
 const onboardingSteps = [
@@ -21,6 +21,18 @@ export const Onboarding = ({needToShow}: {needToShow: boolean}) => {
     const [currentStep, setCurrentStep] = useState(0);
     const carouselRef = useRef<any>(null); // Реф для управления каруселью
     const [isOpen, setIsOpen] = useState(needToShow);
+
+    useEffect(() => {
+        if (isOpen) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = '';
+        }
+    
+        return () => {
+          document.body.style.overflow = '';
+        };
+      }, [isOpen]);
 
     const handleChange = (_, next) => {
         setCurrentStep(next);

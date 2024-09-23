@@ -239,10 +239,10 @@
   border-top-right-radius: 50px; /* Скругленные углы */
   padding: 20px;
   padding-top: 60px;
-  box-shadow: 0 -15px 20px var(--color-1); /* Зеленая тень сверху */
+  box-shadow: 0 -11px 10px var(--color-1); /* Зеленая тень сверху */
   text-align: center; /* Центрирование контента */
   width: 100%; /* Ширина 100% */
-  height: 100%;
+  height: 95%;
   border: none;
 }
 
@@ -904,6 +904,7 @@
 
 .ant-segmented-thumb {
   background-color: #16181E !important;
+  border-radius: 10px !important;
 }
 
 .ant-segmented-item-label {
@@ -934,6 +935,7 @@
 .expandedCard {
   position: absolute;
   left: 0;
+  z-index: 10;
   width: 100%;
   animation-duration: .5s;
   animation-fill-mode: forwards;
@@ -948,6 +950,10 @@
   height: calc(100vh - 25px);
   bottom: 0px;
   z-index: 2;
+}
+
+.onboardingExpandedCard > div {
+  height: 100%;
 }
 
 @keyframes revenueArise {
@@ -986,4 +992,52 @@
   align-items: center;  
   justify-content: center;  
   color: #fff;
+}
+
+/* StarRating.css */
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.star {
+  cursor: pointer;
+  font-size: 40px; /* Размер звезд */
+  margin: 0 5px; /* Расстояние между звездами */
+  color: #d3d3d3; /* Цвет серых (неактивных) звезд */
+  transition: color 0.2s ease-in-out; /* Плавный переход цвета */
+}
+
+.filled {
+  color: #ffd700 !important; /* Цвет активных звезд, золотой */
+}
+
+.bankSelect {
+  width: 100% !important;
+}
+
+.bankSelect .ant-select-selector {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.bankSelect .ant-select-selection-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.bankSelect .ant-select-arrow svg {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.bankSelect .ant-select-selection-item {
+  color: rgba(255, 255, 255, 0.5) !important;
+  padding-inline: 18px !important;
+}
+
+.bankSelect .ant-select-open {
+  color: rgba(255, 255, 255, 0.5) !important;
 }

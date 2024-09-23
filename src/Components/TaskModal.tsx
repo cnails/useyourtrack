@@ -37,7 +37,7 @@ export const TaskModal = ({onClose}: {onClose: () => void}) => {
   return (
     <>
       <ReportUploadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} task_id={data?.task_id!} onSuccess={onSuccess} />
-      <ReviewModal isOpen={isReviewModalOpen} />
+      <ReviewModal isOpen={isReviewModalOpen} onClose={() => setIsReviewModalOpen(false)} />
       <div className="modal-content">
           <div className="image-container">
               {loading && (

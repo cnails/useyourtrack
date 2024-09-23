@@ -1,19 +1,22 @@
-import { Typography, Row, Col, Input, Form, Checkbox, Button, Card, message } from 'antd';
+import { Typography, Row, Col, Input, Form, Checkbox, Button, Card, message, Select } from 'antd';
 import { CommonCard } from './CommonCard';
 import CardNumberInput, { validateCardNumber } from './InputMask';
 import { useState } from 'react';
 import CrossIcon from '../Icons/cross.svg?react';
-import { useGetTgUser } from '../api';
+import { useGetTgUser, useGetWithdrawInfo } from '../api';
 
 const { Title, Paragraph } = Typography;
+const { Option } = Select;
 
 export const RevenuePage = () => {
     const [checked, setChecked] = useState(false);
     const [isInvalidCheckbox, setIsInvalidCheckbox] = useState(false);
     const [isCustomCardExpanded, setIsCustomCardExpanded] = useState(false);
     const [cardNumber, setCardNumber] = useState('');
-    const [bankName, setBankName] = useState('');
+    const [bankName, setBankName] = useState<string | undefined>('Выберите банк');
+
     const {data: userData} = useGetTgUser();
+    const {data: withdrawData} = useGetWithdrawInfo();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setChecked(e.target.checked);
@@ -67,11 +70,21 @@ export const RevenuePage = () => {
             </Col>
             <Col span={24}>
                 <CommonCard className="referralButton">
-                <Input
+                <Select
+                    className='bankSelect'
+                    value={bankName}
+                    onChange={setBankName}
+                    allowClear={false}  // Позволяет очистить выбранное значение
+                    >
+                    {withdrawData?.available_banks.map((availableBankName) => (
+                        <Option key={availableBankName} value={availableBankName}>{availableBankName}</Option>
+                    ))}
+                </Select>
+                {/* <Input
                     placeholder="Наименование банка"
                     className='resetInputStyles'
                     onChange={(e) => setBankName(e.target.value)}
-                />
+                /> */}
                 </CommonCard>
             </Col>
         </Row>

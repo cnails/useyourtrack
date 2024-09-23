@@ -6,7 +6,10 @@ import useCachedImage from '../Utils/useCachedImage';
 import { useGetTgUser } from '../api';
 
 const { Title, Text } = Typography;
-
+// TODO: MainTask сделать ниже
+// TODO: открывать тот же фрейм после сворачивания
+// TODO: онбординг скроллится 0_о
+// TODO: сворачивание чувствительное. Можно поправить?
 export const levelsInfo = [
   {
     imageSrc: 'https://s3-alpha-sig.figma.com/img/1f40/7dd4/31af3582467c4b285817c975227ada06?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=iYvrlZ9kijfAL~vI91MM18JyugoikJEWblIGq0iiFREfmQEb0UVBVBeokJmgdGGxkTWCQPsAW-S2JMwI~VCgR-e-c7XyJEO~unf388dpf3G4FWseKiO0WfUCU1LIJIjrIC4HyRNJuw5yeo7kDvo77iftLb4wBQ~43WqmpS-uvN7tUD-EoIcae-hTCY4wATjO3p0v6QTpbRlzMK2~7rodD0ewnnSDUD52bPxM7aCgldad5DjQJHCky4x05TEIdgcMWqjlKZL0~qL5eYkUnrVAkfbyh3Ho3U6fbmgzwo5VLoxl9oWm1y4~at6Iw003ARZl9QSZk~KDDft9TSqsYFxAPg__',
@@ -78,7 +81,7 @@ export const levelsInfo = [
   },
   {
     // imageSrc: 'https://s3-alpha-sig.figma.com/img/f8c8/f9e1/59640b88eae2b57db785a275a5a70015?Expires=1727654400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YGSmVbNC1NdISA7cymTDO2Euvdy97aq3nVCh~f4WUZ3n8R46oziZfukXil~nmjoz1B3qwnCUMj6ROaNmdTMzDyCf89lOawk--KpD6dc7qMJmqK-YuksgYsWkPTJwHsJ-D-eYm87tlKzKa77qh7VtQZfiWKLCxvbwkI~uNkKpvqtzL~dDvu8qxim1JG1fr6d0G-HGA--3ofAXZAFFH-3jcUg7rvgQ523iLaIG4~LSnzTXVsho5IU5v~kJ2e6NUk8tIRp7GPQLvusW~D1O7slvXHSMAc1brmVRx5SY0taOeIidBvwxTG21~EoTxH~EJF875S2MlJypUs1mfVjuwnjIsw__',
-    imageSrc: 'https://s3-alpha-sig.figma.com/img/4aa7/ce7a/a18dafd45304ee48bd43df106cedd6db?Expires=1727654400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=QHdHBNgUPI6~rZDhWGwip6q2gW72fHRBToSKj1cZdoei7VBAvqbwlEbuauFiDjbF5bq2k1Gfjc0pdSz7akkUszD~E1Rw36bB3Io8pOs-eqePaG6aescQFOPs9pblECrAXKocE7LLv-zCX19iKBS7ZnSxyMS9yPFpQ6Ko0L7r9O39CJObMUIFXRSEjjM8nWHd9HcbvMlZCcyvbQ76mRM5UdnBflR~41wMnfeqiNHyptNF7rvIi5xGW~abumRxqni3eBe646Z-jBPuJiVe9GFU2PRW1O3m~bSTpac-tXIe5tyxd7BIQmT0ntE9nJbVgWUMl-kSQ-vB5PrCzqihJz21Gw__',
+    imageSrc: 'https://s3-alpha-sig.figma.com/img/f8c8/f9e1/59640b88eae2b57db785a275a5a70015?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=gb-GVV8qHujSfMwJ08AbYNC1IMrX~qOMLdztmofHEoBTo66gRmjO8Jz5xGjowA3P-T-AjM2Jcarv5ZdICZ2CmVQhnfRO8xytUTvFE2pxGaKf3RC8M7RmNAqkbumoaCtc2EeRPCgpOebdQa9adjSiNN3B93Kk2wiyW9h1HeXmWd83yxcoQTMk5soAlhb26ubOwdP5diI~l13Xkml27gVwisT9N6VEhlCmDJP7zgJTRPxAOvX9y9c-cJpHkbsPFRhAfZqRhsrevWChac7kNCPfInLAxImx0aPo~aOlCxVg3Xx2MjCiJ1Lf6p8spuq~omF5wmtOlAfEhcG28Sx0hIA8yA__',
     title: 'God',
     color_1: '#7FA467',
     color_2: '#445E27',

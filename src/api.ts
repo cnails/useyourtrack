@@ -70,7 +70,6 @@ export interface GetTaskResponse {
   image_url: string;
   text: string;
 }
-
 export const useGetTask = (
   params: GetTaskParams,
   options?: UseQueryOptions<GetTaskResponse, ErrorResponse>
@@ -127,7 +126,6 @@ export interface LevelInfo {
   rub: number;
   coins: number;
 }
-
 export const useGetLevels = (
   options?: UseQueryOptions<LevelInfo[], ErrorResponse>
 ) => {
@@ -204,6 +202,7 @@ export const useGetReferralsInfo = (
 
 export interface WithdrawInfo {
   text: string;
+  // TODO: выпадающий список
   available_banks: string[];
 }
 
