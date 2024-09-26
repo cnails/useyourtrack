@@ -87,7 +87,7 @@ const App = () => {
       </Content>
 
       {/* TODO: получение и сохранение факта онбординга пользователя */}
-      <Onboarding needToShow={true} />
+      <Onboarding needToShow={false} />
 
       {/* Футер с меню */}
       <Footer style={{ backgroundColor: '#32363C', borderTopLeftRadius: '12px', borderTopRightRadius: '12px', textAlign: 'center', position: 'sticky', bottom: '-1px', zIndex: 1, padding: '0 8px'}}>

@@ -11,7 +11,7 @@ enum ETabs {
   massPosting = 'Масспостинг',
 }
 
-const DATA = [
+const YANDEX_MUSIC = [
   {
     title: 'Стартовый:',
     description: [
@@ -42,6 +42,43 @@ const DATA = [
     description: [
       '1000 новых слушателей на трек',
       '1000 лайков (на трек и альбов в сумме)',
+    ],
+    price: '19 900₽',
+    withBonus: true,
+  },
+]
+
+const VK = [
+  {
+    title: 'Стартовый:',
+    description: [
+      '100 новых слушателей на трек',
+      '100 добавлений в плейлисты слушателей',
+    ],
+    price: '2 900₽',
+  },
+  {
+    title: 'Базовый:',
+    description: [
+      '200 новых слушателей на трек',
+      '200 добавлений в плейлисты слушателей',
+    ],
+    price: '4 900₽',
+  },
+  {
+    title: 'Оптимальный:',
+    description: [
+      '500 новых слушателей на трек',
+      '500 добавлений в плейлисты слушателей',
+    ],
+    price: '11 900₽',
+    withBonus: true,
+  },
+  {
+    title: 'Продвинутый:',
+    description: [
+      '1000 новых слушателей на трек',
+      '1000 добавлений в плейлисты слушателей',
     ],
     price: '19 900₽',
     withBonus: true,
@@ -130,6 +167,17 @@ export const PromotePage = () => {
     WebApp.openLink(`https://t.me/UseMyTrackEarnBot?start=${encodeURI(message)}`);
   }
 
+  const renderUrlAbout = () => {
+    switch (selectedTab) {
+      case ETabs.yandex:
+        return (<>Продвижение в Яндекс Музыке: <a style={{color: '#919295'}} href="https://usemytrack.ru/">https://usemytrack.ru/</a></>);
+      case ETabs.vk:
+        return (<>Продвижение в ВК: <a style={{color: '#919295'}} href="https://usemytrack.ru/prodvizheniye-muziki-vkontakte">https://usemytrack.ru/prodvizheniye-muziki-vkontakte</a></>);
+      case ETabs.massPosting:
+        return (<>Масспостинг: <a style={{color: '#919295'}} href="https://usemytrack.ru/prodvizhenie-trekov-massposting-video">https://usemytrack.ru/prodvizhenie-trekov-massposting-video</a></>);
+    }
+  }
+
   const renderPromoteBlock = ({title, description, price, withBonus, subTitle}: {title: string, description?: string[], price: string, withBonus?: boolean, subTitle?: JSX.Element}) => {
     return (
       <CommonCard key={title} style={{padding: '10px', marginTop: '12px', display: 'flex', flexDirection: 'column'}}>
@@ -202,7 +250,7 @@ export const PromotePage = () => {
             <div className='promotion-title'>Прослушивания</div>
           </Col>
           <Col style={{marginTop: '12px'}}>
-            {DATA.map(renderPromoteBlock)}
+            {(selectedTab === ETabs.yandex ? YANDEX_MUSIC : VK).map(renderPromoteBlock)}
           </Col>
         </Row>
         <Row gutter={16} className="tiles-container">
@@ -257,7 +305,7 @@ export const PromotePage = () => {
       </Row>
       <Row gutter={16} className="tiles-container">
         <Col>
-          <div className='pay-promotion-title'>Вы можете воспользоваться нашими платными пакетами продвижения в Яндекс Музыке:</div>
+          <div className='pay-promotion-title'>Вы можете воспользоваться нашими платными пакетами продвижения:</div>
         </Col>
       </Row>
       <div className='dark-segmented'>
@@ -266,7 +314,8 @@ export const PromotePage = () => {
       {renderContent()}
       <Row gutter={16} className='tiles-container'>
         <Col style={{fontSize: '12px', fontWeight: '300', color: '#919295', textAlign: 'center', marginTop: '20px'}}>
-          подробнее об услуге на нашем сайте: <a style={{color: '#919295'}} href="https://usemytrack.ru/">https://usemytrack.ru/</a>
+          {renderUrlAbout()}
+          
         </Col>
       </Row>
     </div>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useQuery, useMutation, UseQueryOptions, UseMutationOptions } from 'react-query';
 import { getUserId } from './Utils/utils';
 
-const isMock = false;
+const isMock = true;
 
 // Создаем экземпляр axios с базовым URL
 const apiClient = axios.create({
@@ -42,9 +42,9 @@ export const useGetTgUser = (
   return useQuery<GetTgUserResponse, ErrorResponse>(
     ['getTgUser'],
     async () => {
-      // if (isMock) {
-      //   return {user_id: 1, user_type: 'musician', level_id: 5, balance_rub: '75', balance_umt: '140', approved_tasks: '5'}
-      // }
+      if (isMock) {
+        return {user_id: 1, user_type: 'musician', level_id: 4, balance_rub: '750', balance_umt: '7900', approved_tasks: '5'}
+      }
       const response = await apiClient.get<GetTgUserResponse>('/get_tg_user', {
         params: {
           user_id,

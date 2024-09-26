@@ -561,7 +561,7 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@twa-dev/sdk@^6.7.1":
+"@twa-dev/sdk@^6.9.2":
   version "6.9.2"
   resolved "https://registry.npmjs.org/@twa-dev/sdk/-/sdk-6.9.2.tgz"
   integrity sha512-xLqqtJfRtFyvM8arG8eoAtdY2GTdVzDdl64M3blHheY2OqON5QTG+WYUs5EZ+gPFXwxDxRCYTDbOJv1gycJqdA==

@@ -17,6 +17,7 @@ export const queryClient = new QueryClient({
 
 WebApp.ready();
 WebApp.expand();
+window.Telegram?.WebApp.disableVerticalSwipes?.()
 
 const channel = new BroadcastChannel('telegram_webapp');
 

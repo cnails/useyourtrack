@@ -41,7 +41,7 @@ export const LevelSliderPage = ({close}: {close: () => void}) => {
         </button>)}
         {/* <Carousel arrows infinite={false} beforeChange={handleChange} prevArrow={<ArrowLeft />} nextArrow={<ArrowRight />}> */}
         <Carousel style={{overflow: 'visible'}} ref={carouselRef} arrows infinite={false} beforeChange={handleChange} prevArrow={<></>} nextArrow={<></>}>
-          {levelsInfo.map(({imageSrc, color_1, color_2, title}) => {
+          {levelsInfo.map(({imageSrc, color_1, color_2}) => {
             const colorProps = {'--color-1': color_1, '--color-2': color_2} as any;
             return (
               <div className='carousel-content-wrapper'>
@@ -94,7 +94,8 @@ export const LevelSliderPage = ({close}: {close: () => void}) => {
       {data?.user_type === 'musician' && (
         <Row gutter={16}>
           <Col span={24}>
-              <CommonCard className={`referralButton ${(selectedLevel + 1) === data.level_id ? 'levelSlider_selectedLevel' : 'levelSlider'}`}>
+              {/* <CommonCard className={`referralButton ${(selectedLevel + 1) === data.level_id ? 'levelSlider_selectedLevel' : 'levelSlider'}`}> */}
+              <CommonCard className="referralButton">
                   <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%'}}>
                     <div>Пакет бесплатных слушателей</div>
                     <div>{30 + selectedLevel * 10}</div>

@@ -248,7 +248,6 @@
 
 /* Обертка для полной ширины */
 .full-width-container {
-  width: 100vw; /* 100% ширины окна просмотра */
   margin: 18px -28px 0 -28px;
   display: flex;
   justify-content: center;
@@ -349,6 +348,11 @@
   font-weight: 500;
   font-size: 20px;
   padding: 0 14px;
+}
+
+.rules-mass-posting {
+  font-size: 12px;
+  text-align: left;
 }
 
 .tile-description {
@@ -453,6 +457,7 @@
   padding-top: 16px;
   padding-bottom: 16px;
   margin-top: 20px;
+  color: #fff;
 }
 
 .referralListItem {
@@ -915,6 +920,8 @@
   font-weight: 600;
   display: flex;
   align-items: center;
+  width: 100%;
+  justify-content: center;
 }
 
 .custom-segmented {

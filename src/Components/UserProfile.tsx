@@ -47,7 +47,7 @@ export const UserProfile = () => {
 
         <Row gutter={[16, 16]} style={{marginTop: '20px', justifyContent: 'space-between', flexWrap: 'nowrap'}}>
           <Col span={8} style={{padding: 0, alignSelf: 'center'}}>
-            <UserLevel levelName="Epic" currentLevel={data?.level_id} maxLevel="9" experiencePercentage="75" onLevelClick={() => setIsLevelSliderOpen(true)} />
+            <UserLevel onLevelClick={() => setIsLevelSliderOpen(true)} />
           </Col>
           <Col span={14} style={{padding: 0}}>
             <BalanceCard showBalanceInfo={() => setIsBalanceInfoViewActive(true)} />

@@ -36,13 +36,19 @@ export const RulesPage = () => {
             <div className="tile-description">за прослушивание трека в Вк</div>
           </CommonCard>
         </Col>
+        <Col>
+          <CommonCard>
+            <ThunderboltFilled className="tile-icon" />
+            <div className="tile-text rules-mass-posting">Задания по масспостингу (публикации видеороликов под треки артистов в своих соц. сетях) оцениваются в зависимости от набранных просмотров от <strong style={{fontSize: '14px'}}>20р.</strong> до <strong style={{fontSize: '14px'}}>300р.</strong> + 50 umt</div>
+          </CommonCard>
+        </Col>
       </Row>
       <Row gutter={16} className="tiles-container">
         <Col>
           <div className="lifehack">
             <span className="lifehack-icon">💡</span>
             <div className="lifehack-title">Лайфхак</div>
-            <div className="lifehack-description">Вы можете оформить пробную подписку на Яндекс.Музыку (месяц бесплатно) и получать по 7₽ за прослушивание каждого трека из задания.</div>
+            <div className="lifehack-description">Вы можете оформить пробную подписку на Яндекс.Музыку (месяц бесплатно) и получать по 7₽ за прослушивание одного трека из задания.</div>
           </div>
         </Col>
       </Row>
