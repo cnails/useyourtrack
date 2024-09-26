@@ -1,6 +1,7 @@
 import { Button, Card, Carousel } from "antd"
 import { useEffect, useRef, useState } from "react";
 import LogoIcon from '../Icons/logo.svg?react';
+import { useGetTgUser } from "../api";
 
 const onboardingSteps = [
     {
@@ -17,10 +18,26 @@ const onboardingSteps = [
     },
 ];
 
+const onboardingSteps_musican = [
+    {
+        text: 'Здесь музыканты продвигают треки, а слушатели зарабатывают на прослушиваниях. Получай тысячи новых слушателей от сервиса use my track и попадай в рекомендации алгоритмов музыкальных площадок',
+    },
+    {
+        text: 'Нажимай на наушники и получай задание на прослушивание треков. Следуй инструкции выполнения, загружай отчеты и копи монеты. Так ты сможешь продвигать свою музыку бесплатно',
+    },
+    {
+        text: 'Во вкладке «продвижение» тебя ждет приветственный демо-пакет на 20 бесплатных слушателей',
+    },
+    {
+        text: 'Наши слушатели могут дать активность твоему треку на Яндекс Музыке, Вконтакте, а также во всех социальных сетях, выложив видеоролик под твой трек со своих аккаунтов. Подробнее во вкладке «продвижение»',
+    },
+];
+
 export const Onboarding = ({needToShow}: {needToShow: boolean}) => {
     const [currentStep, setCurrentStep] = useState(0);
     const carouselRef = useRef<any>(null); // Реф для управления каруселью
     const [isOpen, setIsOpen] = useState(needToShow);
+    const {data} = useGetTgUser();
 
     useEffect(() => {
         if (isOpen) {
@@ -60,9 +77,10 @@ export const Onboarding = ({needToShow}: {needToShow: boolean}) => {
                 <br />
                 <LogoIcon />
                 <Carousel style={{overflow: 'visible'}} ref={carouselRef} arrows infinite={false} beforeChange={handleChange} prevArrow={<></>} nextArrow={<></>}>
-                    {onboardingSteps.map(({text}) => {
+                    {(data?.user_type === 'musician' ? onboardingSteps_musican : onboardingSteps).map(({text}) => {
                         return (
                             <div>
+                                <img src="/onboarding1.webp" alt="" style={{width: '100%'}} />
                                 <div className="onboardingCarouselContentWrapper">
                                     <div className="onboardingCarouselStep">{currentStep + 1}</div>
                                     <div className="onboardingCarouselText">{text}</div>
@@ -71,7 +89,7 @@ export const Onboarding = ({needToShow}: {needToShow: boolean}) => {
                         );
                     })}
                 </Carousel>
-                <Button type="primary" htmlType="submit" className='mainButton' onClick={next} style={{marginTop: '24px'}}>
+                <Button type="primary" htmlType="submit" className='mainButton' onClick={next} style={{marginTop: '18px'}}>
                     Дальше
                 </Button>
             </Card>

@@ -511,6 +511,10 @@
   padding: 30px;
 }
 
+.mainButton:focus {
+  outline: none !important;
+}
+
 .revenueExpandedButton {
   margin-top: 100px;
   color: #84CB69 !important;
@@ -978,16 +982,17 @@
   display: flex;
   align-items: center;
   padding: 0 10px;
+  margin-top: 12px;
 }
 
 .onboarding .slick-slider {
-  padding: 30px 0 50px;
+  padding: 20px 0;
 }
 
 .onboardingCarouselText {
   color: #fff;
   text-align: left;
-  padding-left: 24px;
+  padding-left: 18px;
 }
 
 .onboardingCarouselStep {
