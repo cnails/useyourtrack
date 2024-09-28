@@ -1053,3 +1053,31 @@
 .bankSelect .ant-select-open {
   color: rgba(255, 255, 255, 0.5) !important;
 }
+
+.ant-collapse-item > * {
+  color: #fff !important;
+  font-weight: 700;
+}
+
+.ant-collapse-content > div > span {
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.faqIcon {
+  font-size: 24px;
+}
+
+.faqIconWrapper {
+  position: relative;
+  margin-right: 14px;
+
+}
+
+.faqIconWrapper::after {
+  content: "?";
+  color: #000;
+  position: absolute;
+  top: 3px;
+  left: 9px;
+}

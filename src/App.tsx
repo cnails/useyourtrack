@@ -14,6 +14,7 @@ import { RevenuePage } from './Components/RevenuePage';
 import { useGetTgUser } from './api';
 import { PromotePage } from './Components/PromotePage';
 import { Onboarding } from './Components/Onboarding';
+import { FAQPage } from './Components/FAQPage';
 
 const { Content, Footer } = Layout;
 
@@ -58,11 +59,15 @@ const App = () => {
   const {data} = useGetTgUser();
   const tabs = getTabs(data?.user_type).filter(({enabled}) => enabled ?? true);
   const [selectedPage, setSelectedPage] = useState<EPage>(EPage.main);
+  const [isFAQPageOpen, setIsFAQPageOpen] = useState(false);
 
   const renderPage = () => {
+    if (isFAQPageOpen) {
+      return <FAQPage onClose={() => setIsFAQPageOpen(false)} />
+    }
     switch (selectedPage) {
       case EPage.main:
-        return <UserProfile />
+        return <UserProfile onFaqClick={() => setIsFAQPageOpen(true)} />
       case EPage.rules:
         return <RulesPage />
       case EPage.referral:
@@ -90,7 +95,7 @@ const App = () => {
       <Onboarding needToShow={true} />
 
       {/* Футер с меню */}
-      <Footer style={{ backgroundColor: '#32363C', borderTopLeftRadius: '12px', borderTopRightRadius: '12px', textAlign: 'center', position: 'sticky', bottom: '-1px', zIndex: 1, padding: '0 8px'}}>
+      <Footer style={{ backgroundColor: '#32363C', borderTopLeftRadius: '12px', borderTopRightRadius: '12px', textAlign: 'center', position: 'sticky', bottom: '-1px', zIndex: 1, padding: '0 4px 8px 4px'}}>
         <Tabs
           defaultActiveKey={EPage.main}
           items={tabs.map(tab => ({

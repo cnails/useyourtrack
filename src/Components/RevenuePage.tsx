@@ -80,11 +80,6 @@ export const RevenuePage = () => {
                         <Option key={availableBankName} value={availableBankName}>{availableBankName}</Option>
                     ))}
                 </Select>
-                {/* <Input
-                    placeholder="Наименование банка"
-                    className='resetInputStyles'
-                    onChange={(e) => setBankName(e.target.value)}
-                /> */}
                 </CommonCard>
             </Col>
         </Row>

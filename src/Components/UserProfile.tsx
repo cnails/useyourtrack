@@ -4,6 +4,7 @@ import { BalanceCard } from './BalanceCard';
 import { UserLevel } from './UserLevel';
 import { MainTask } from './MainTask';
 import { BalanceInfo } from './BalanceInfo';
+import FaqIcon from '../Icons/faq.svg?react';
 import WebApp from '@twa-dev/sdk';
 import { useGetTgUser } from '../api';
 import { LevelSliderPage } from './LevelSliderPage';
@@ -11,7 +12,7 @@ import { LevelSliderPage } from './LevelSliderPage';
 const { Content } = Layout;
 const { Text } = Typography;
 
-export const UserProfile = () => {
+export const UserProfile = ({onFaqClick}: {onFaqClick: () => void}) => {
   const [isLevelSliderOpen, setIsLevelSliderOpen] = useState(false);
   const {data} = useGetTgUser();
   const [isBalanceInfoViewActive, setIsBalanceInfoViewActive] = useState(false);
@@ -37,10 +38,13 @@ export const UserProfile = () => {
   return (
       <Content>
         <Row gutter={[16, 16]}>
-          <Col span={20} style={{display: 'flex'}}>
+          <Col span={24}>
             {/* <img width={'40px'} src={user.imageUrl} alt="profile picture" /> */}
-            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginLeft: '10px'}}>
+            <div style={{display: 'flex', width: '100%', justifyContent: 'space-between', marginLeft: '10px'}}>
               <Text className='largeText'>{user.name}</Text>
+              <div className="faqIconWrapper" onClick={onFaqClick}>
+                <FaqIcon className="faqIcon" />
+              </div>
             </div>
           </Col>
         </Row>
