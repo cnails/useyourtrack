@@ -8,7 +8,7 @@ export const UserLevel = ({ onLevelClick }: {onLevelClick: () => void}) => {
   const userLvl = data?.level_id;
   const prevLevelInfo = levelsInfo[userLvl - 2 || 0];
   const curLevelInfo = levelsInfo[userLvl - 1 || 0];
-  const progress = ((Number(data?.balance_umt) - prevLevelInfo.umt_limit!) / (curLevelInfo.umt_limit! - prevLevelInfo.umt_limit!)) * 100;
+  const progress = ((Number(data?.balance_umt) - prevLevelInfo.umt_limit!) / (curLevelInfo.umt_limit! - prevLevelInfo.umt_limit!)) * 100 || 3;
 
   return (
     <div className="user-level">

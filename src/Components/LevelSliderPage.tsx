@@ -41,12 +41,15 @@ export const LevelSliderPage = ({close}: {close: () => void}) => {
         </button>)}
         {/* <Carousel arrows infinite={false} beforeChange={handleChange} prevArrow={<ArrowLeft />} nextArrow={<ArrowRight />}> */}
         <Carousel style={{overflow: 'visible'}} ref={carouselRef} arrows infinite={false} beforeChange={handleChange} prevArrow={<></>} nextArrow={<></>}>
-          {levelsInfo.map(({imageSrc, color_1, color_2}) => {
+          {levelsInfo.map(({imageSrc, color_1, color_2, title}) => {
             const colorProps = {'--color-1': color_1, '--color-2': color_2} as any;
             return (
-              <div className='carousel-content-wrapper'>
-                <img src={imageSrc as string} alt="Custom Icon" className="carousel-image" />
-                <div className='gradient-circle' style={colorProps} />
+              <div>
+                <div className='carousel-content-wrapper'>
+                  <img src={imageSrc as string} alt="Custom Icon" className="carousel-image" />
+                  <div className='gradient-circle' style={colorProps} />
+                </div>
+                <div style={{color: 'white', transform: 'translateY(-35px)', fontSize: '35px', fontWeight: '600'}}>{title}</div>
               </div>
             );
           })}

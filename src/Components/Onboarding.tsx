@@ -72,7 +72,7 @@ export const Onboarding = ({needToShow}: {needToShow: boolean}) => {
 
     return (
         <div className='expandedCard onboardingExpandedCard'>
-            <Card className="custom-card onboarding" style={{'--color-1': '#46FF40', '--color-2': '#12940E'}}>
+            <Card className="custom-card onboarding" style={{'--color-1': '#46FF40', '--color-2': '#12940E', paddingTop: '12px'}}>
                 <div style={{fontSize: '30px', fontWeight: '600', color: '#fff', lineHeight: '35px'}}>Добро пожаловать<br />на сервис</div>
                 <br />
                 <LogoIcon />

@@ -95,7 +95,7 @@ const App = () => {
       <Onboarding needToShow={true} />
 
       {/* Футер с меню */}
-      <Footer style={{ backgroundColor: '#32363C', borderTopLeftRadius: '12px', borderTopRightRadius: '12px', textAlign: 'center', position: 'sticky', bottom: '-1px', zIndex: 1, padding: '0 4px 8px 4px'}}>
+      {!isFAQPageOpen && <Footer style={{ backgroundColor: '#32363C', borderTopLeftRadius: '12px', borderTopRightRadius: '12px', textAlign: 'center', position: 'sticky', bottom: '-1px', zIndex: 1, padding: '0 4px 8px 4px'}}>
         <Tabs
           defaultActiveKey={EPage.main}
           items={tabs.map(tab => ({
@@ -109,7 +109,7 @@ const App = () => {
           }))}
           onChange={(key) => setSelectedPage(key as EPage)}
         />
-      </Footer>
+      </Footer>}
     </Layout>
   );
 };
