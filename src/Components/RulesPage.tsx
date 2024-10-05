@@ -79,6 +79,48 @@ export const RulesPage = () => {
             </div>
         </Col>
       </Row>
+      <Row gutter={16}>
+        <Col>
+          <CommonCard className="rules_tile rules_tile_main">
+            <div className="rules_tile_text">
+              Важно <span>❗❗❗</span>
+            </div>
+            <span className="rules_tile_description">Не снимайте лайк с трека после выполнения задания!
+            При выводе средств мы проверяем ваш плейлист «мне нравится», где должны находиться все прослушанные из заданий треки.</span>
+          </CommonCard>
+        </Col>
+        <Col>
+          <CommonCard className="rules_tile">
+            <div className="rules_tile_text">❗</div>
+            {/* TODO: дубль? */}
+            <span className="rules_tile_description">Пользователи, которые снимают лайки с выполненных заданий, в том числе на заданиях, по которым уже происходили выплаты, отправляются в бан.</span>
+          </CommonCard>
+        </Col>
+        <Col>
+          <CommonCard className="rules_tile">
+            <div className="rules_tile_text">❗</div>
+            <span className="rules_tile_description">При каждом выводе средств система проверяет ваш плейлист и при нарушении данного правила выводы прекращаются и пользователь блокируется.</span>
+          </CommonCard>
+        </Col>
+        <Col>
+          <CommonCard className="rules_tile">
+            <div className="rules_tile_text">❗</div>
+            <span className="rules_tile_description">Создание и ведение дополнительных аккаунтов строго запрещено. </span>
+          </CommonCard>
+        </Col>
+        <Col>
+          <CommonCard className="rules_tile">
+            <div className="rules_tile_text">❗</div>
+            <span className="rules_tile_description">Одному пользователю соответствует только один аккаунт.</span>
+          </CommonCard>
+        </Col>
+        <Col>
+          <CommonCard className="rules_tile">
+            <div className="rules_tile_text">❗</div>
+            <span className="rules_tile_description">Существуют задания, стоимость выполнения которых оценивается ниже.</span>
+          </CommonCard>
+        </Col>
+      </Row>
     </div>
   );
 };

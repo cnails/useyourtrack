@@ -3,15 +3,18 @@ import UmtIcon from '../Icons/umtIcon.svg?react';
 import RubbleIcon from '../Icons/rubbleIcon.svg?react';
 import TelegramIcon from '../Icons/telegram.svg?react';
 import { CommonCard } from './CommonCard';
+import { useGetReferralsInfo } from '../api';
 
 const { Title, Paragraph } = Typography;
 
 export const ReferralPage = () => {
-  const onClick = () => {
-    const inviteMessage = "Привет! Присоединяйся к нашему сообществу на сайте! Вот ссылка: https://example.com";
-    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent('https://example.com')}&text=${encodeURIComponent(inviteMessage)}`;
+  const {data} = useGetReferralsInfo();
 
-    window.open(telegramUrl, '_blank');
+  const onClick = () => {
+    // const inviteMessage = "Привет! Присоединяйся к нашему сообществу на сайте! Вот ссылка: https://example.com";
+    // const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent('https://example.com')}&text=${encodeURIComponent(inviteMessage)}`;
+
+    window.open(data?.ref_link, '_blank');
   }
   return (
     <div className="referral-page-container">
@@ -39,9 +42,10 @@ export const ReferralPage = () => {
       <Row gutter={16} className="tiles-container" style={{paddingTop: '24px'}}>
         <Col>
           {/* Не выводить если 0? */}
-          <span>Твои друзья: 3</span>
+          <span>Твои друзья: {data?.referrals}</span>
         </Col>
-        <Col span={24}>
+        {/* где данные? */}
+        {/* <Col span={24}>
           <CommonCard className="referralList">
             <div className="referralListItem">
               <span>Имя</span>
@@ -56,7 +60,7 @@ export const ReferralPage = () => {
               <span>Награда</span>
             </div>
           </CommonCard>
-        </Col>
+        </Col> */}
       </Row>
       <Row gutter={16}>
         <Col span={24}>

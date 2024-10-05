@@ -1,8 +1,8 @@
 {
-  "name": "useyourtrack",
+  "name": "usemytrack",
   "private": true,
   "version": "0.1.0",
-  "homepage": "https://cnails.github.io/useyourtrack",
+  "homepage": "/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",

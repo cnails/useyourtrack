@@ -43,7 +43,7 @@ export const useGetTgUser = (
     ['getTgUser'],
     async () => {
       if (isMock) {
-        return {user_id: 1, user_type: 'musician', level_id: 4, balance_rub: '750', balance_umt: '7900', approved_tasks: '5'}
+        return Promise.resolve({user_id: 1, user_type: 'listener', level_id: 9, balance_rub: 1500, balance_umt: 42000, approved_tasks: 126, not_approved_tasks: 10} as GetTgUserResponse);
       }
       const response = await apiClient.get<GetTgUserResponse>('/get_tg_user', {
         params: {
@@ -202,7 +202,6 @@ export const useGetReferralsInfo = (
 
 export interface WithdrawInfo {
   text: string;
-  // TODO: выпадающий список
   available_banks: string[];
 }
 

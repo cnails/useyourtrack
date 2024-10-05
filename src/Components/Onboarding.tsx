@@ -39,17 +39,19 @@ export const Onboarding = ({needToShow}: {needToShow: boolean}) => {
     const [isOpen, setIsOpen] = useState(needToShow);
     const {data} = useGetTgUser();
 
-    useEffect(() => {
-        if (isOpen) {
-          document.body.style.overflow = 'hidden';
-        } else {
-          document.body.style.overflow = '';
-        }
+    const isMusician = data?.user_type === 'musician';
+
+    // useEffect(() => {
+    //     if (isOpen) {
+    //       document.body.style.overflow = 'hidden';
+    //     } else {
+    //       document.body.style.overflow = '';
+    //     }
     
-        return () => {
-          document.body.style.overflow = '';
-        };
-      }, [isOpen]);
+    //     return () => {
+    //       document.body.style.overflow = '';
+    //     };
+    //   }, [isOpen]);
 
     const handleChange = (_, next) => {
         setCurrentStep(next);
@@ -71,16 +73,14 @@ export const Onboarding = ({needToShow}: {needToShow: boolean}) => {
     return (
         <div className='expandedCard onboardingExpandedCard'>
             <Card className="custom-card onboarding" style={{'--color-1': '#46FF40', '--color-2': '#12940E'}}>
-                {/* <div style={{fontSize: '38px'}}>{userData?.balance_rub! >= 400 ? '🔎' : '❌'}</div>
-                <div style={{color: '#fff', fontSize: '30px', fontWeight: '600', paddingTop: '10px'}}>{userData?.balance_rub! >= 400 ? 'Ваша заявка отправлена на проверку' : 'Вывод доступен от 400₽'}</div> */}
                 <div style={{fontSize: '30px', fontWeight: '600', color: '#fff', lineHeight: '35px'}}>Добро пожаловать<br />на сервис</div>
                 <br />
                 <LogoIcon />
                 <Carousel style={{overflow: 'visible'}} ref={carouselRef} arrows infinite={false} beforeChange={handleChange} prevArrow={<></>} nextArrow={<></>}>
-                    {(data?.user_type === 'musician' ? onboardingSteps_musican : onboardingSteps).map(({text}) => {
+                    {(isMusician ? onboardingSteps_musican : onboardingSteps).map(({text}, index) => {
                         return (
                             <div>
-                                <img src="/onboarding1.webp" alt="" style={{width: '100%'}} />
+                                <img src={`/onboarding${index + 1}${!isMusician && index > 1 ? 'c' : ''}.webp`} alt="" style={{width: '100%'}} />
                                 <div className="onboardingCarouselContentWrapper">
                                     <div className="onboardingCarouselStep">{currentStep + 1}</div>
                                     <div className="onboardingCarouselText">{text}</div>

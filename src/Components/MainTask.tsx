@@ -2,32 +2,16 @@ import { Card, Typography } from 'antd';
 import { useState } from 'react';
 import { TaskModal } from './TaskModal';
 import CrossIcon from '../Icons/cross.svg?react';
-import useCachedImage from '../Utils/useCachedImage';
+// import useCachedImage from '../Utils/useCachedImage';
 import { useGetTgUser } from '../api';
-
-
-// TODO: прогресс уровня
 
 const { Title, Text } = Typography;
 // TODO: MainTask сделать ниже
 // TODO: открывать тот же фрейм после сворачивания
 // TODO: сворачивание чувствительное. Можно поправить?
 
-const isProd = true;
-import hp1 from '../assets/hp1.webp';
-import hp2 from '../assets/hp2.webp';
-import hp3 from '../assets/hp3.webp';
-import hp4 from '../assets/hp4.webp';
-import hp5 from '../assets/hp5.webp';
-import hp6 from '../assets/hp6.webp';
-import hp7 from '../assets/hp7.webp';
-import hp8 from '../assets/hp8.webp';
-import hp9 from '../assets/hp9.webp';
-
 function getImageUrl(levelId: number) {
-  hp1 && hp2 && hp3 && hp4 && hp5 && hp6 && hp7 && hp8 && hp9;
-
-  return !isProd ? eval(`hp${levelId}`) : `/hp${levelId}.webp`;
+  return `/hp${levelId}.webp`;
 }
 
 export const levelsInfo = [
